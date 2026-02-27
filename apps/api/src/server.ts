@@ -62,30 +62,34 @@ app.get('/api/health', (_req, res) => {
 // Error handler
 app.use(errorHandler);
 
-// Start server
-async function main() {
-  try {
-    await prisma.$connect();
-    console.warn(`Database connected`);
+// Export app for Vercel serverless
+export default app;
 
-    app.listen(PORT, () => {
-      console.warn(`TrackPulse API running on http://localhost:${PORT}`);
-    });
-  } catch (error) {
-    console.error('Failed to start server:', error);
-    process.exit(1);
+// Start server only when run directly (not imported by Vercel)
+if (process.env.VERCEL !== '1') {
+  async function main() {
+    try {
+      await prisma.$connect();
+      console.warn(`Database connected`);
+
+      app.listen(PORT, () => {
+        console.warn(`TrackPulse API running on http://localhost:${PORT}`);
+      });
+    } catch (error) {
+      console.error('Failed to start server:', error);
+      process.exit(1);
+    }
   }
+
+  main();
+
+  process.on('SIGINT', async () => {
+    await prisma.$disconnect();
+    process.exit(0);
+  });
+
+  process.on('SIGTERM', async () => {
+    await prisma.$disconnect();
+    process.exit(0);
+  });
 }
-
-main();
-
-// Graceful shutdown
-process.on('SIGINT', async () => {
-  await prisma.$disconnect();
-  process.exit(0);
-});
-
-process.on('SIGTERM', async () => {
-  await prisma.$disconnect();
-  process.exit(0);
-});
