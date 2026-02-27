@@ -1,6 +1,5 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import TrackPulseLogo from '@/assets/TrackPulseLogo';
 import TrackFieldFooter from '@/assets/TrackFieldFooter';
 import { useAuthStore } from '@/stores/auth.store';
 
@@ -43,9 +42,7 @@ export default function Sidebar({ collapsed, onToggle }: SidebarProps) {
               exit={{ opacity: 0 }}
               className="w-full flex justify-center"
             >
-              <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-                <path d="M 4 16 L 8 16 L 10 8 L 16 24 L 22 6 L 24 16 L 28 16" stroke="#00D4FF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+              <img src="/logo-icon.png" alt="TrackField" className="w-9 h-9" />
             </motion.div>
           ) : (
             <motion.div
@@ -54,7 +51,7 @@ export default function Sidebar({ collapsed, onToggle }: SidebarProps) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
-              <TrackPulseLogo size="small" />
+              <img src="/logo.png" alt="TrackField Projects" className="h-9 w-auto" />
             </motion.div>
           )}
         </AnimatePresence>

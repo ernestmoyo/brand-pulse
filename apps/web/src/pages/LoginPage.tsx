@@ -30,40 +30,14 @@ export default function LoginPage() {
         backgroundSize: '60px 60px',
       }} />
 
-      {/* ECG Pulse Hero Animation */}
+      {/* Logo */}
       <motion.div
-        className="mb-12"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        className="mb-8"
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8 }}
       >
-        <svg width="600" height="100" viewBox="0 0 600 100" fill="none" className="w-[90vw] max-w-[600px]">
-          {/* Flatline that becomes ECG */}
-          <motion.path
-            d="M 0 50 L 120 50 L 160 50 L 190 15 L 210 85 L 230 10 L 250 90 L 270 25 L 300 50 L 380 50 L 400 50 L 430 20 L 445 70 L 460 15 L 475 80 L 490 30 L 510 50 L 600 50"
-            stroke="#00D4FF"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            fill="none"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 2.5, ease: 'easeInOut' }}
-          />
-          {/* Glow effect */}
-          <motion.path
-            d="M 0 50 L 120 50 L 160 50 L 190 15 L 210 85 L 230 10 L 250 90 L 270 25 L 300 50 L 380 50 L 400 50 L 430 20 L 445 70 L 460 15 L 475 80 L 490 30 L 510 50 L 600 50"
-            stroke="#00D4FF"
-            strokeWidth="6"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            fill="none"
-            opacity="0.15"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 2.5, ease: 'easeInOut' }}
-          />
-        </svg>
+        <img src="/logo.png" alt="TrackField Projects" className="h-16 md:h-20 w-auto mx-auto" />
       </motion.div>
 
       {/* Brand Name */}
@@ -71,7 +45,7 @@ export default function LoginPage() {
         className="text-center mb-8"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5, duration: 0.6 }}
+        transition={{ delay: 0.6, duration: 0.6 }}
       >
         <div className="flex items-center justify-center gap-2 mb-3">
           <span className="text-5xl md:text-6xl font-display text-white tracking-tight">TRACK</span>
@@ -88,7 +62,7 @@ export default function LoginPage() {
         className="w-full max-w-md glass-card p-8 mx-4"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 2, duration: 0.5 }}
+        transition={{ delay: 1, duration: 0.5 }}
       >
         <h2 className="text-xl font-semibold text-white mb-6">Sign In</h2>
 
@@ -155,7 +129,7 @@ export default function LoginPage() {
         className="mt-8"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2.5 }}
+        transition={{ delay: 1.5 }}
       >
         <TrackFieldFooter />
       </motion.div>
