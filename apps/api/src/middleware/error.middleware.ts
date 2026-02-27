@@ -36,6 +36,18 @@ export function errorHandler(err: Error, _req: Request, res: Response, _next: Ne
 
   console.error('Unhandled error:', err);
 
+  // Prisma connection errors
+  if (err.message?.includes('connect') || err.message?.includes('ECONNREFUSED') || (err as unknown as Record<string, unknown>).code === 'P1001') {
+    res.status(503).json({
+      success: false,
+      error: {
+        code: 'DATABASE_UNAVAILABLE',
+        message: 'Database connection unavailable. Please check DATABASE_URL configuration.',
+      },
+    });
+    return;
+  }
+
   res.status(500).json({
     success: false,
     error: {

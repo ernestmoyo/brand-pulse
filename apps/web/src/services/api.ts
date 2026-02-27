@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+
 export const api = axios.create({
-  baseURL: '/api',
+  baseURL: API_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -34,7 +36,7 @@ api.interceptors.response.use(
           const { state } = JSON.parse(stored);
           if (state?.refreshToken && !error.config._retry) {
             error.config._retry = true;
-            const res = await axios.post('/api/auth/refresh', {
+            const res = await axios.post(`${API_BASE_URL}/auth/refresh`, {
               refreshToken: state.refreshToken,
             });
             const newState = {
