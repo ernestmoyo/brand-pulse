@@ -35,28 +35,52 @@ const PRODUCTS: readonly Product[] = [
     placeholderIcon: '',
   },
   {
-    name: 'Nescafe Cappuccino',
-    category: 'Coffee',
-    format: 'Sachet mix, 10-pack',
-    imageUrl: 'https://www.nescafe.com/za/sites/default/files/2024-04/8801055063598_C1N1_1712640794473_0.png',
-    brandColor: '#8B4513',
-    placeholderIcon: '',
-  },
-  {
     name: 'Milo',
     category: 'Hot Beverage',
     format: 'Powder, 400g',
-    imageUrl: null,
+    imageUrl: '/products/milo.avif',
     brandColor: '#2D6A2E',
-    placeholderIcon: '\u2615',
+    placeholderIcon: '',
   },
   {
     name: 'KitKat',
     category: 'Confectionery',
     format: '4 Finger, 41.5g',
-    imageUrl: null,
+    imageUrl: '/products/kitkat.webp',
     brandColor: '#C8102E',
-    placeholderIcon: '\uD83C\uDF6B',
+    placeholderIcon: '',
+  },
+  {
+    name: 'Bar One',
+    category: 'Confectionery',
+    format: 'Nougat caramel, 21g',
+    imageUrl: '/products/barone.webp',
+    brandColor: '#E2001A',
+    placeholderIcon: '',
+  },
+  {
+    name: 'Smarties',
+    category: 'Confectionery',
+    format: 'Dragees, 40g',
+    imageUrl: '/products/smarties.webp',
+    brandColor: '#FF6B35',
+    placeholderIcon: '',
+  },
+  {
+    name: 'MAGGI Noodles',
+    category: 'Culinary',
+    format: '2-Minute Noodles, 68g',
+    imageUrl: '/products/maggi.avif',
+    brandColor: '#FFD700',
+    placeholderIcon: '',
+  },
+  {
+    name: 'Jungle Oats',
+    category: 'Cereals',
+    format: 'Porridge Oats, 1kg',
+    imageUrl: '/products/jungle-oats.png',
+    brandColor: '#4CAF50',
+    placeholderIcon: '',
   },
 ] as const;
 
@@ -122,7 +146,7 @@ export default function ProductShowcase() {
       </h3>
       <p className="text-xs text-pulse-meta mb-4">Products We Track</p>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-3">
         {PRODUCTS.map((product, i) => (
           <ProductCard key={product.name} product={product} index={i} />
         ))}
