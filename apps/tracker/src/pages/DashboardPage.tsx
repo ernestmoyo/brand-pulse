@@ -4,6 +4,7 @@ import BrandHealthTrendChart from '@/components/charts/BrandHealthTrendChart';
 import CompetitorRadarChart from '@/components/charts/CompetitorRadarChart';
 import ShareOfVoiceDonut from '@/components/charts/ShareOfVoiceDonut';
 import AlertsFeed from '@/components/modules/AlertsFeed';
+import ProductShowcase from '@/components/modules/ProductShowcase';
 
 // Demo data (wired to API in production)
 const kpiData = [
@@ -101,6 +102,9 @@ export default function DashboardPage() {
           <CompetitorRadarChart data={radarData} brands={radarBrands} />
         </div>
       </div>
+
+      {/* Product Showcase */}
+      <ProductShowcase />
 
       {/* Bottom Row */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
