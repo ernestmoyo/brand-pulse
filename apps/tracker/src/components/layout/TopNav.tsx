@@ -13,8 +13,9 @@ export default function TopNav() {
         </span>
       </div>
 
-      {/* Center: Brand Pulse wordmark (subtle) */}
+      {/* Center: Nestle Brand Pulse wordmark (subtle) */}
       <div className="hidden md:flex items-center gap-1.5">
+        <span className="text-xs font-display text-white/40 tracking-widest">NESTLE</span>
         <span className="text-xs font-display text-white/40 tracking-widest">BRAND</span>
         <span className="text-xs font-mono font-light text-pulse-cyan/40 tracking-widest">PULSE</span>
       </div>

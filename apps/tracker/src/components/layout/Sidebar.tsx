@@ -53,9 +53,12 @@ export default function Sidebar({ collapsed, onToggle }: SidebarProps) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
-              <div className="flex items-center gap-1.5">
-                <span className="text-lg font-display text-white tracking-tight">BRAND</span>
-                <span className="text-lg font-mono font-light text-pulse-cyan tracking-tight">PULSE</span>
+              <div className="flex flex-col leading-tight">
+                <span className="text-xs font-display text-pulse-meta tracking-widest">NESTLÉ</span>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-lg font-display text-white tracking-tight">BRAND</span>
+                  <span className="text-lg font-mono font-light text-pulse-cyan tracking-tight">PULSE</span>
+                </div>
               </div>
             </motion.div>
           )}

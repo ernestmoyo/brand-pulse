@@ -191,7 +191,7 @@ export default function ReportGeneratorPage() {
 
               {/* Footer */}
               <div className="mt-auto pt-4">
-                <div className="text-[8px] text-pulse-meta font-mono">Brand Pulse | Powered by Exotica Agency | Port Louis, Mauritius</div>
+                <div className="text-[8px] text-pulse-meta font-mono">Nestle Brand Pulse | Powered by Exotica Agency | Port Louis, Mauritius</div>
               </div>
             </motion.div>
           </div>
