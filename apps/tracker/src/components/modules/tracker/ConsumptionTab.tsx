@@ -18,7 +18,7 @@ const productTypeData = [
 const purchasePlaceData = [
   { place: 'Supermarket', pct: 45.2 },
   { place: 'Wholesaler', pct: 22.5 },
-  { place: 'Spaza Shop', pct: 18.3 },
+  { place: 'Corner Shop', pct: 18.3 },
   { place: 'Convenience', pct: 10.5 },
   { place: 'Online', pct: 3.5 },
 ];

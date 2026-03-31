@@ -10,14 +10,14 @@ const demoUsers = [
 ];
 
 const demoClients = [
-  { id: '1', name: 'Tiger Brands', brands: 1, studies: 1, active: true },
+  { id: '1', name: 'Nestle Mauritius', brands: 1, studies: 1, active: true },
 ];
 
 const auditLog = [
   { id: '1', user: 'Admin User', action: 'Viewed Dashboard', resource: 'Dashboard', time: '14:30:22' },
   { id: '2', user: 'Analyst User', action: 'Generated Report', resource: 'Report Q2-2024', time: '09:15:44' },
   { id: '3', user: 'Admin User', action: 'Updated Wave Status', resource: 'Q2-2024', time: '08:52:11' },
-  { id: '4', user: 'Thabo Nkosi', action: 'Downloaded Report', resource: 'Report Q1-2024', time: '16:42:33' },
+  { id: '4', user: 'Nestle Client', action: 'Downloaded Report', resource: 'Report Q1-2024', time: '16:42:33' },
 ];
 
 export default function AdminPage() {

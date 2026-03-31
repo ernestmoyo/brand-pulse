@@ -2,26 +2,26 @@ import { motion } from 'framer-motion';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 
 const adRecallData = [
-  { medium: 'TV', 'Jungle Oats': 28.5, 'Weet-Bix': 15.2, "Kellogg's": 8.5 },
-  { medium: 'Radio', 'Jungle Oats': 18.3, 'Weet-Bix': 12.1, "Kellogg's": 9.8 },
-  { medium: 'Billboard', 'Jungle Oats': 12.5, 'Weet-Bix': 8.3, "Kellogg's": 5.2 },
-  { medium: 'Digital', 'Jungle Oats': 15.8, 'Weet-Bix': 10.5, "Kellogg's": 7.1 },
-  { medium: 'Social', 'Jungle Oats': 22.1, 'Weet-Bix': 14.8, "Kellogg's": 11.5 },
+  { medium: 'TV', 'Nescafe': 28.5, 'Jacobs': 15.2, "Douwe Egberts": 8.5 },
+  { medium: 'Radio', 'Nescafe': 18.3, 'Jacobs': 12.1, "Douwe Egberts": 9.8 },
+  { medium: 'Billboard', 'Nescafe': 12.5, 'Jacobs': 8.3, "Douwe Egberts": 5.2 },
+  { medium: 'Digital', 'Nescafe': 15.8, 'Jacobs': 10.5, "Douwe Egberts": 7.1 },
+  { medium: 'Social', 'Nescafe': 22.1, 'Jacobs': 14.8, "Douwe Egberts": 11.5 },
 ];
 
 const sovData = [
-  { brand: 'Jungle Oats', sov: 36.2, color: '#00D4FF' },
-  { brand: 'Weet-Bix', sov: 24.5, color: '#F59E0B' },
-  { brand: "Kellogg's", sov: 19.1, color: '#8B5EA6' },
-  { brand: 'ProNutro', sov: 12.1, color: '#57B9A5' },
-  { brand: 'Future Life', sov: 8.1, color: '#EF4444' },
+  { brand: 'Nescafe', sov: 36.2, color: '#00D4FF' },
+  { brand: 'Jacobs', sov: 24.5, color: '#F59E0B' },
+  { brand: "Douwe Egberts", sov: 19.1, color: '#8B5EA6' },
+  { brand: 'Local/Unbranded', sov: 12.1, color: '#57B9A5' },
+  { brand: 'Bru Coffee', sov: 8.1, color: '#EF4444' },
 ];
 
 const spotInventory = [
-  { campaign: 'Start Strong', medium: 'TV', months: 'Apr-May', channel: 'SABC1', recall: 28.5 },
-  { campaign: 'Start Strong', medium: 'Radio', months: 'Apr-Jun', channel: 'Metro FM', recall: 18.3 },
+  { campaign: 'Start Strong', medium: 'TV', months: 'Apr-May', channel: 'MBC TV', recall: 28.5 },
+  { campaign: 'Start Strong', medium: 'Radio', months: 'Apr-Jun', channel: 'Radio Plus', recall: 18.3 },
   { campaign: 'Morning Energy', medium: 'Digital', months: 'May-Jun', channel: 'Facebook/Instagram', recall: 22.1 },
-  { campaign: 'Outdoor Push', medium: 'Billboard', months: 'Apr-Jun', channel: 'Primedia Outdoor', recall: 12.5 },
+  { campaign: 'Outdoor Push', medium: 'Billboard', months: 'Apr-Jun', channel: 'ABC Motors Outdoor', recall: 12.5 },
 ];
 
 export default function AdvertisingTab() {
@@ -40,9 +40,9 @@ export default function AdvertisingTab() {
               <YAxis tick={{ fill: '#64748B', fontSize: 10, fontFamily: 'JetBrains Mono' }} axisLine={false} tickLine={false} tickFormatter={(v) => `${v}%`} />
               <Tooltip contentStyle={{ background: '#1A2332', border: '1px solid rgba(0,212,255,0.2)', borderRadius: '8px', fontSize: '11px', fontFamily: 'JetBrains Mono' }} formatter={(v: number) => [`${v}%`]} />
               <Legend wrapperStyle={{ fontSize: '10px', fontFamily: 'JetBrains Mono' }} />
-              <Bar dataKey="Jungle Oats" fill="#00D4FF" radius={[2, 2, 0, 0]} animationDuration={1200} />
-              <Bar dataKey="Weet-Bix" fill="#F59E0B" radius={[2, 2, 0, 0]} animationDuration={1200} />
-              <Bar dataKey="Kellogg's" fill="#8B5EA6" radius={[2, 2, 0, 0]} animationDuration={1200} />
+              <Bar dataKey="Nescafe" fill="#00D4FF" radius={[2, 2, 0, 0]} animationDuration={1200} />
+              <Bar dataKey="Jacobs" fill="#F59E0B" radius={[2, 2, 0, 0]} animationDuration={1200} />
+              <Bar dataKey="Douwe Egberts" fill="#8B5EA6" radius={[2, 2, 0, 0]} animationDuration={1200} />
             </BarChart>
           </ResponsiveContainer>
         </div>
