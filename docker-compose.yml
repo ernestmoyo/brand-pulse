@@ -3,12 +3,12 @@ version: '3.8'
 services:
   postgres:
     image: postgres:16-alpine
-    container_name: trackpulse-db
+    container_name: exotica-db
     restart: unless-stopped
     environment:
-      POSTGRES_USER: trackpulse
-      POSTGRES_PASSWORD: trackpulse
-      POSTGRES_DB: trackpulse
+      POSTGRES_USER: exotica
+      POSTGRES_PASSWORD: exotica
+      POSTGRES_DB: brandpulse
     ports:
       - '5432:5432'
     volumes:
@@ -16,7 +16,7 @@ services:
 
   redis:
     image: redis:7-alpine
-    container_name: trackpulse-redis
+    container_name: exotica-redis
     restart: unless-stopped
     ports:
       - '6379:6379'
@@ -25,10 +25,10 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4
-    container_name: trackpulse-pgadmin
+    container_name: exotica-pgadmin
     restart: unless-stopped
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@trackpulse.dev
+      PGADMIN_DEFAULT_EMAIL: admin@exotica.mu
       PGADMIN_DEFAULT_PASSWORD: admin
     ports:
       - '5050:80'

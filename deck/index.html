@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exotica Agency x Nestle Mauritius — Brand Intelligence Partnership</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+/* ========== RESET & BASE ========== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #080C14;
+  --bg-card: #0E1420;
+  --bg-card-hover: #141C2C;
+  --cyan: #00D4FF;
+  --amber: #F59E0B;
+  --white: #FFFFFF;
+  --gray-100: #F1F5F9;
+  --gray-300: #CBD5E1;
+  --gray-400: #94A3B8;
+  --gray-500: #64748B;
+  --gray-700: #334155;
+  --gradient-cyan: linear-gradient(135deg, #00D4FF 0%, #0099CC 100%);
+  --gradient-amber: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  --gradient-premium: linear-gradient(135deg, #00D4FF 0%, #7C3AED 50%, #F59E0B 100%);
+  --font-display: 'DM Serif Display', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --slide-transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========== SLIDE CONTAINER ========== */
+.deck { position: relative; width: 100%; height: 100%; }
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 80px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(30px);
+  transition: opacity var(--slide-transition), transform var(--slide-transition), visibility 0s linear 0.6s;
+  overflow-y: auto;
+}
+
+.slide.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity var(--slide-transition), transform var(--slide-transition), visibility 0s linear 0s;
+}
+
+.slide-inner {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ========== TYPOGRAPHY ========== */
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 4rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--white);
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--cyan);
+}
+
+p, li {
+  font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+  line-height: 1.7;
+  color: var(--gray-300);
+}
+
+.accent { color: var(--cyan); }
+.accent-amber { color: var(--amber); }
+
+.gradient-text {
+  background: var(--gradient-premium);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 1.8vw, 1.4rem);
+  color: var(--gray-400);
+  margin-top: 12px;
+}
+
+.tagline {
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  color: var(--cyan);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  margin-top: 24px;
+  border-left: 3px solid var(--cyan);
+  padding-left: 16px;
+}
+
+/* ========== BULLET LIST ========== */
+.bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.bullets li {
+  position: relative;
+  padding-left: 32px;
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+}
+
+.bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gradient-cyan);
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+}
+
+.bullets.amber li::before {
+  background: var(--gradient-amber);
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+}
+
+/* ========== CARDS GRID ========== */
+.cards-grid {
+  display: grid;
+  gap: 20px;
+  width: 100%;
+  max-width: 1100px;
+}
+
+.cards-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.cards-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 28px 24px;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 212, 255, 0.2);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 212, 255, 0.05);
+}
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 16px;
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.15);
+}
+
+.card h3 { margin-bottom: 8px; font-size: clamp(1rem, 1.5vw, 1.2rem); }
+.card p { font-size: clamp(0.85rem, 1.2vw, 1rem); color: var(--gray-400); }
+
+/* ========== VALUES BAR ========== */
+.values-bar {
+  display: flex;
+  gap: 32px;
+  margin-top: 36px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.values-bar span {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--amber);
+  position: relative;
+}
+
+.values-bar span:not(:last-child)::after {
+  content: '|';
+  position: absolute;
+  right: -18px;
+  color: var(--gray-700);
+}
+
+/* ========== COVER SLIDE ========== */
+.cover-line {
+  width: 80px;
+  height: 3px;
+  background: var(--gradient-cyan);
+  border-radius: 2px;
+  margin: 32px 0;
+}
+
+.cover-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 212, 255, 0.08);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 100px;
+  padding: 8px 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--cyan);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.cover-badge .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--cyan);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.4); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 8px rgba(0, 212, 255, 0); }
+}
+
+.cover-brand {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  color: var(--white);
+  margin-top: 40px;
+  opacity: 0.7;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* ========== TIMELINE ========== */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  max-width: 800px;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 28px;
+  top: 20px;
+  bottom: 20px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--cyan), var(--amber));
+}
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 20px 0;
+}
+
+.timeline-dot {
+  width: 56px;
+  min-width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 2px solid var(--cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--cyan);
+  z-index: 1;
+}
+
+.timeline-item:last-child .timeline-dot {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+.timeline-content h3 { margin-bottom: 6px; }
+.timeline-content p { font-size: 1rem; }
+
+/* ========== PACKAGES ========== */
+.package-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 36px 28px;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.package-card:hover {
+  transform: translateY(-6px);
+}
+
+.package-card.featured {
+  border-color: var(--cyan);
+  box-shadow: 0 0 40px rgba(0, 212, 255, 0.1);
+}
+
+.package-card.featured::before {
+  content: 'RECOMMENDED';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gradient-cyan);
+  color: var(--bg);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 4px 16px;
+  border-radius: 100px;
+}
+
+.package-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  color: var(--white);
+}
+
+.package-list {
+  list-style: none;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.package-list li {
+  font-size: 0.95rem;
+  color: var(--gray-300);
+  padding-left: 24px;
+  position: relative;
+}
+
+.package-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--cyan);
+  font-weight: 700;
+}
+
+.package-price {
+  font-size: 0.9rem;
+  color: var(--gray-500);
+  font-style: italic;
+  margin-top: auto;
+}
+
+/* ========== DASHBOARD MOCKUP ========== */
+.dashboard-mockup {
+  width: 100%;
+  max-width: 1000px;
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 212, 255, 0.05);
+}
+
+.dashboard-topbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.mock-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+}
+
+.mock-dot.red { background: #FF5F57; }
+.mock-dot.yellow { background: #FEBC2E; }
+.mock-dot.green { background: #28C840; }
+
+.dashboard-topbar-title {
+  flex: 1;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--gray-500);
+  letter-spacing: 0.05em;
+}
+
+.dashboard-body {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto;
+  gap: 16px;
+}
+
+.kpi-card {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.kpi-label { font-size: 0.7rem; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+.kpi-value { font-size: 1.6rem; font-weight: 700; color: var(--white); }
+.kpi-change { font-size: 0.75rem; color: #22C55E; margin-top: 4px; }
+.kpi-change.down { color: #EF4444; }
+
+.chart-area {
+  grid-column: span 2;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+  padding: 16px;
+  min-height: 140px;
+  position: relative;
+  overflow: hidden;
+}
+
+.chart-title { font-size: 0.75rem; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px; }
+
+/* SVG mini charts */
+.mini-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 90px;
+  padding-top: 10px;
+}
+
+.mini-bar {
+  flex: 1;
+  border-radius: 4px 4px 0 0;
+  transition: height 0.5s ease;
+}
+
+.mini-line {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  height: 90px;
+}
+
+/* Radar mockup */
+.radar-mock {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  position: relative;
+  margin: 10px auto 0;
+}
+
+.radar-mock::before {
+  content: '';
+  position: absolute;
+  inset: 15px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 212, 255, 0.1);
+}
+
+.radar-mock::after {
+  content: '';
+  position: absolute;
+  inset: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 212, 255, 0.06);
+}
+
+.radar-shape {
+  position: absolute;
+  inset: 8px;
+  clip-path: polygon(50% 5%, 90% 30%, 85% 75%, 40% 95%, 10% 60%, 20% 20%);
+  background: rgba(0, 212, 255, 0.15);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+/* ========== DEEP DIVE MOCKUP ========== */
+.deepdive-mockup {
+  width: 100%;
+  max-width: 1000px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.deepdive-panel {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 20px;
+  min-height: 180px;
+}
+
+.deepdive-panel h4 {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--gray-400);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+}
+
+/* Funnel */
+.funnel {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+
+.funnel-step {
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--white);
+}
+
+/* Horizontal bars */
+.h-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.h-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.h-bar-label { font-size: 0.72rem; color: var(--gray-400); width: 60px; text-align: right; }
+
+.h-bar {
+  height: 18px;
+  border-radius: 4px;
+  position: relative;
+}
+
+.h-bar-val {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
+/* ========== MAURITIUS MAP ========== */
+.map-container {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.map-svg-wrap {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.map-legend {
+  flex: 0 0 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.map-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--gray-300);
+}
+
+.map-legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+/* ========== TEAM ========== */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.team-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 36px 28px;
+  text-align: center;
+}
+
+.team-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-family: var(--font-display);
+  color: var(--white);
+}
+
+.team-card:first-child .team-avatar { background: var(--gradient-cyan); }
+.team-card:last-child .team-avatar { background: var(--gradient-amber); }
+
+.team-card h3 { color: var(--white); margin-bottom: 4px; font-size: 1.2rem; }
+.team-role { font-size: 0.9rem; color: var(--cyan); margin-bottom: 10px; }
+.team-detail { font-size: 0.9rem; color: var(--gray-400); }
+
+/* ========== CONTACT ========== */
+.contact-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 1.1rem;
+  color: var(--gray-300);
+}
+
+.contact-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.contact-cta {
+  margin-top: 32px;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--gray-400);
+  font-style: italic;
+}
+
+/* ========== SECTION LABEL ========== */
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 12px;
+}
+
+/* ========== SLIDE QUOTE HIGHLIGHT ========== */
+.highlight-quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+  color: var(--amber);
+  text-align: center;
+  margin: 20px 0;
+  font-style: italic;
+  position: relative;
+  padding: 0 20px;
+}
+
+.highlight-quote::before { content: '\201C'; position: absolute; left: -5px; top: -10px; font-size: 3rem; color: var(--amber); opacity: 0.3; }
+
+/* ========== PROGRESS BAR ========== */
+.progress-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: var(--gradient-cyan);
+  transition: width 0.4s ease;
+  z-index: 100;
+}
+
+/* ========== SLIDE COUNTER ========== */
+.slide-counter {
+  position: fixed;
+  bottom: 16px;
+  right: 24px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--gray-500);
+  z-index: 100;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ========== NAV HINT ========== */
+.nav-hint {
+  position: fixed;
+  bottom: 16px;
+  left: 24px;
+  font-size: 0.7rem;
+  color: var(--gray-700);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 22px;
+  border: 1px solid var(--gray-700);
+  border-radius: 4px;
+  font-size: 0.65rem;
+  color: var(--gray-500);
+}
+
+/* ========== GLOW EFFECTS ========== */
+.glow-cyan {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.glow-amber {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 900px) {
+  .slide { padding: 40px 32px; }
+  .cards-grid.cols-3 { grid-template-columns: repeat(2, 1fr); }
+  .deepdive-mockup { grid-template-columns: 1fr; }
+  .map-container { flex-direction: column; }
+  .map-legend { flex: none; }
+  .team-grid { grid-template-columns: 1fr; max-width: 400px; }
+  .dashboard-body { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .slide { padding: 32px 20px; }
+  .cards-grid.cols-3, .cards-grid.cols-2 { grid-template-columns: 1fr; }
+  .values-bar { gap: 20px; }
+  .values-bar span:not(:last-child)::after { display: none; }
+}
+
+/* ========== PRINT ========== */
+@media print {
+  .slide {
+    position: relative;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    page-break-after: always;
+    min-height: 100vh;
+    padding: 40px;
+  }
+  .progress-bar, .slide-counter, .nav-hint { display: none !important; }
+  body { background: #fff; color: #111; }
+  h1, h2, h3 { color: #111; }
+  p, li { color: #333; }
+  .card, .dashboard-mockup, .deepdive-panel, .team-card, .package-card { background: #f8f8f8; border-color: #ddd; }
+}
+
+/* ========== STAGGER ANIMATIONS ========== */
+.slide.active .stagger-1 { animation: fadeUp 0.5s ease 0.1s both; }
+.slide.active .stagger-2 { animation: fadeUp 0.5s ease 0.2s both; }
+.slide.active .stagger-3 { animation: fadeUp 0.5s ease 0.3s both; }
+.slide.active .stagger-4 { animation: fadeUp 0.5s ease 0.4s both; }
+.slide.active .stagger-5 { animation: fadeUp 0.5s ease 0.5s both; }
+.slide.active .stagger-6 { animation: fadeUp 0.5s ease 0.6s both; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+
+<div class="deck">
+
+  <!-- ==================== SLIDE 1: COVER ==================== -->
+  <div class="slide active" data-slide="1">
+    <div class="glow-cyan" style="top:-150px;right:-100px;"></div>
+    <div class="glow-amber" style="bottom:-100px;left:-50px;"></div>
+    <div class="slide-inner" style="text-align:center;">
+      <div class="cover-badge stagger-1"><span class="dot"></span> Brand Intelligence Partnership</div>
+      <h1 class="stagger-2" style="margin-bottom:8px;">Exotica Agency</h1>
+      <h1 class="stagger-2" style="font-size:clamp(1.4rem,3vw,2.6rem);color:var(--gray-400);margin-bottom:0;">
+        <span style="color:var(--cyan);">&times;</span> Nestle Mauritius
+      </h1>
+      <div class="cover-line stagger-3"></div>
+      <p class="subtitle stagger-3">Brand Intelligence Partnership Proposal</p>
+      <div class="tagline stagger-4">Own your brand data. Own your insights.</div>
+      <div class="cover-brand stagger-5">Exotica Agency Co Ltd</div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 2: ABOUT ==================== -->
+  <div class="slide" data-slide="2">
+    <div class="slide-inner">
+      <p class="section-label stagger-1">About Us</p>
+      <h2 class="stagger-2">Who We Are</h2>
+      <ul class="bullets stagger-3">
+        <li><strong>Founded in Mauritius</strong> — deep local market knowledge and relationships</li>
+        <li><strong>On-ground brand activation</strong> across the entire island</li>
+        <li><strong>Trained field teams</strong> in all 12 districts, ready for deployment</li>
+        <li><strong>Expanding into data-driven market research</strong> — combining field presence with analytics technology</li>
+      </ul>
+      <div class="values-bar stagger-4">
+        <span>Professionalism</span>
+        <span>Communication</span>
+        <span>Excellence</span>
+        <span>Results-Driven</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 3: WHY EXOTICA ==================== -->
+  <div class="slide" data-slide="3">
+    <div class="slide-inner">
+      <p class="section-label stagger-1">Our Advantage</p>
+      <h2 class="stagger-2">Why Choose Us?</h2>
+      <div class="cards-grid cols-3 stagger-3">
+        <div class="card">
+          <div class="card-icon">&#127470;&#127474;</div>
+          <h3>Local Presence</h3>
+          <p>Teams in every district of Mauritius, embedded in local communities</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#128101;</div>
+          <h3>On-Ground Expertise</h3>
+          <p>24+ trained field researchers for surveys, intercepts, and activation</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#128241;</div>
+          <h3>Digital Capability</h3>
+          <p>Social media monitoring, digital surveys, and online sentiment analysis</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#128176;</div>
+          <h3>Cost-Effective</h3>
+          <p>A fraction of international research firm pricing with local depth</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#9889;</div>
+          <h3>Speed</h3>
+          <p>Quarterly turnaround guaranteed — no waiting months for reports</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#127919;</div>
+          <h3>Tailored Insights</h3>
+          <p>Custom research designed around Nestle's specific brand portfolio</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 4: OPPORTUNITY ==================== -->
+  <div class="slide" data-slide="4">
+    <div class="slide-inner">
+      <p class="section-label stagger-1">The Opportunity</p>
+      <h2 class="stagger-2">The Opportunity for Nestle Mauritius</h2>
+      <div class="highlight-quote stagger-3">Stop paying consultants for your own data.</div>
+      <ul class="bullets amber stagger-4">
+        <li>Own a <strong>continuous brand health monitoring system</strong> tailored to Mauritius</li>
+        <li>Track <strong>every Nestle brand</strong> across all 12 districts in real time</li>
+        <li>Quarterly pulse on <strong>awareness, consumption, and advertising effectiveness</strong></li>
+        <li>Competitive intelligence on <strong>Jacobs, Douwe Egberts, and local brands</strong></li>
+        <li>Transform from periodic snapshots to a <strong>living brand intelligence platform</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 5: WHAT WE TRACK ==================== -->
+  <div class="slide" data-slide="5">
+    <div class="slide-inner">
+      <p class="section-label stagger-1">Research Framework</p>
+      <h2 class="stagger-2">Six Pillars of Brand Intelligence</h2>
+      <div class="cards-grid cols-3">
+        <div class="card stagger-1">
+          <div class="card-icon" style="background:rgba(0,212,255,0.12);">&#128200;</div>
+          <h3>Brand Awareness</h3>
+          <p>Top-of-Mind, Spontaneous, and Aided awareness tracking</p>
+        </div>
+        <div class="card stagger-2">
+          <div class="card-icon" style="background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.15);">&#9749;</div>
+          <h3>Brand Consumption</h3>
+          <p>Regular use, Past 30 Days, Most Often Used brand metrics</p>
+        </div>
+        <div class="card stagger-3">
+          <div class="card-icon" style="background:rgba(124,58,237,0.12);border-color:rgba(124,58,237,0.15);">&#128250;</div>
+          <h3>Advertising Effectiveness</h3>
+          <p>Ad recall, Share of Voice, media mix optimization</p>
+        </div>
+        <div class="card stagger-4">
+          <div class="card-icon" style="background:rgba(239,68,68,0.12);border-color:rgba(239,68,68,0.15);">&#127942;</div>
+          <h3>Competitive Intelligence</h3>
+          <p>Pricing, market share, and competitive positioning</p>
+        </div>
+        <div class="card stagger-5">
+          <div class="card-icon" style="background:rgba(34,197,94,0.12);border-color:rgba(34,197,94,0.15);">&#128101;</div>
+          <h3>Consumer Segments</h3>
+          <p>Age, SEC, District, Urban/Rural segmentation</p>
+        </div>
+        <div class="card stagger-6">
+          <div class="card-icon" style="background:rgba(236,72,153,0.12);border-color:rgba(236,72,153,0.15);">&#128172;</div>
+          <h3>Social Pulse</h3>
+          <p>Online sentiment, brand mentions, engagement tracking</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 6: METHODOLOGY ==================== -->
+  <div class="slide" data-slide="6">
+    <div class="slide-inner">
+      <p class="section-label stagger-1">Methodology</p>
+      <h2 class="stagger-2">Research Methodology</h2>
+      <div class="cards-grid cols-2 stagger-3" style="max-width:900px;">
+        <div class="card">
+          <h3 style="color:var(--white);margin-bottom:16px;">Study Design</h3>
+          <ul class="bullets" style="gap:12px;">
+            <li>Sample: <strong>n=900 per quarter</strong></li>
+            <li>Method: <strong>CATI + field intercepts</strong></li>
+            <li>Duration: <strong>8-10 minutes</strong> per interview</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 style="color:var(--white);margin-bottom:16px;">Quotas &amp; Quality</h3>
+          <ul class="bullets" style="gap:12px;">
+            <li>Quota: Sex, Age, SEC, <strong>all 12 districts</strong>, Urban/Rural</li>
+            <li>Quality: Standard QA, <strong>real-time monitoring</strong></li>
+            <li>Proven across <strong>10+ FMCG trackers</strong> in Mauritius</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 7: DATA COLLECTION ==================== -->
+  <div class="slide" data-slide="7">
+    <div class="slide-inner">
+      <p class="section-label stagger-1">Data Sources</p>
+      <h2 class="stagger-2">Multi-Channel Data Harvesting</h2>
+      <div class="cards-grid cols-3 stagger-3" style="max-width:1000px;">
+        <div class="card">
+          <div class="card-icon">&#128222;</div>
+          <h3>Primary Research</h3>
+          <p>Telephone surveys and in-store intercepts across the island</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#128225;</div>
+          <h3>Digital Listening</h3>
+          <p>Social media brand mentions and sentiment analysis</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#127991;</div>
+          <h3>Price Monitoring</h3>
+          <p>Retail price tracking across outlets in all districts</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#128202;</div>
+          <h3>Open Data</h3>
+          <p>Government statistics, trade data, and economic indicators</p>
+        </div>
+        <div class="card" style="grid-column: span 2;">
+          <div class="card-icon" style="background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.15);">&#128065;</div>
+          <h3>Field Intelligence</h3>
+          <p>Our activation teams across Mauritius serve as eyes on the ground — real-time market observations from every district</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 8: THE PLATFORM ==================== -->
+  <div class="slide" data-slide="8">
+    <div class="slide-inner">
+      <p class="section-label stagger-1">The Platform</p>
+      <h2 class="stagger-2">Brand Pulse &mdash; Your Command Centre</h2>
+      <p class="subtitle stagger-2" style="margin-bottom:32px;text-align:center;max-width:700px;">A live, interactive dashboard replacing static quarterly PowerPoint reports.<br>Access your data anytime, anywhere.</p>
+      <div class="dashboard-mockup stagger-3">
+        <div class="dashboard-topbar">
+          <div class="mock-dot red"></div>
+          <div class="mock-dot yellow"></div>
+          <div class="mock-dot green"></div>
+          <span class="dashboard-topbar-title">Brand Pulse &mdash; Nestle Mauritius Dashboard</span>
+        </div>
+        <div class="dashboard-body">
+          <div class="kpi-card">
+            <div class="kpi-label">Brand Awareness</div>
+            <div class="kpi-value" style="color:var(--cyan);">78%</div>
+            <div class="kpi-change">&#9650; +3.2%</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">TOM Recall</div>
+            <div class="kpi-value" style="color:var(--amber);">42%</div>
+            <div class="kpi-change">&#9650; +1.8%</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">P30D Usage</div>
+            <div class="kpi-value">65%</div>
+            <div class="kpi-change">&#9650; +2.1%</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Ad Recall</div>
+            <div class="kpi-value">51%</div>
+            <div class="kpi-change down">&#9660; -0.5%</div>
+          </div>
+          <div class="chart-area">
+            <div class="chart-title">Awareness Trend &mdash; Q1-Q4</div>
+            <svg class="mini-line" viewBox="0 0 400 80" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <polyline points="0,60 50,52 100,48 150,42 200,38 250,30 300,25 350,18 400,12" stroke="url(#cyanGrad)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <polyline points="0,70 50,65 100,60 150,58 200,55 250,50 300,48 350,44 400,40" stroke="url(#amberGrad)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6,4"/>
+              <defs>
+                <linearGradient id="cyanGrad" x1="0" y1="0" x2="400" y2="0"><stop offset="0%" stop-color="#00D4FF"/><stop offset="100%" stop-color="#0099CC"/></linearGradient>
+                <linearGradient id="amberGrad" x1="0" y1="0" x2="400" y2="0"><stop offset="0%" stop-color="#F59E0B"/><stop offset="100%" stop-color="#D97706"/></linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div class="chart-area">
+            <div class="chart-title">Brand Share</div>
+            <div class="mini-bars">
+              <div class="mini-bar" style="height:85%;background:var(--gradient-cyan);"></div>
+              <div class="mini-bar" style="height:55%;background:rgba(245,158,11,0.7);"></div>
+              <div class="mini-bar" style="height:40%;background:rgba(124,58,237,0.6);"></div>
+              <div class="mini-bar" style="height:30%;background:rgba(239,68,68,0.5);"></div>
+              <div class="mini-bar" style="height:70%;background:var(--gradient-cyan);"></div>
+              <div class="mini-bar" style="height:45%;background:rgba(245,158,11,0.7);"></div>
+              <div class="mini-bar" style="height:35%;background:rgba(124,58,237,0.6);"></div>
+              <div class="mini-bar" style="height:25%;background:rgba(239,68,68,0.5);"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 9: DEEP DIVE ==================== -->
+  <div class="slide" data-slide="9">
+    <div class="slide-inner">
+      <p class="section-label stagger-1">Analytics</p>
+      <h2 class="stagger-2">Deep Dive Analytics</h2>
+      <div class="deepdive-mockup stagger-3">
+        <div class="deepdive-panel">
+          <h4>Awareness Funnel</h4>
+          <div class="funnel">
+            <div class="funnel-step" style="width:100%;background:rgba(0,212,255,0.3);"><span>Aided Awareness</span><span>92%</span></div>
+            <div class="funnel-step" style="width:82%;background:rgba(0,212,255,0.4);"><span>Spontaneous</span><span>68%</span></div>
+            <div class="funnel-step" style="width:58%;background:rgba(0,212,255,0.55);"><span>Top of Mind</span><span>42%</span></div>
+            <div class="funnel-step" style="width:40%;background:rgba(0,212,255,0.7);"><span>Brand Love</span><span>28%</span></div>
+          </div>
+        </div>
+        <div class="deepdive-panel">
+          <h4>Consumption Breakdown</h4>
+          <div class="h-bars">
+            <div class="h-bar-row"><span class="h-bar-label">Nescafe</span><div class="h-bar" style="width:80%;background:var(--gradient-cyan);"><span class="h-bar-val">42%</span></div></div>
+            <div class="h-bar-row"><span class="h-bar-label">Maggi</span><div class="h-bar" style="width:65%;background:rgba(245,158,11,0.7);"><span class="h-bar-val">34%</span></div></div>
+            <div class="h-bar-row"><span class="h-bar-label">Milo</span><div class="h-bar" style="width:52%;background:rgba(34,197,94,0.6);"><span class="h-bar-val">27%</span></div></div>
+            <div class="h-bar-row"><span class="h-bar-label">KitKat</span><div class="h-bar" style="width:45%;background:rgba(239,68,68,0.6);"><span class="h-bar-val">23%</span></div></div>
+            <div class="h-bar-row"><span class="h-bar-label">Cerelac</span><div class="h-bar" style="width:35%;background:rgba(124,58,237,0.6);"><span class="h-bar-val">18%</span></div></div>
+          </div>
+        </div>
+        <div class="deepdive-panel">
+          <h4>Ad Effectiveness</h4>
+          <div style="display:flex;align-items:center;gap:20px;">
+            <div class="radar-mock"><div class="radar-shape"></div></div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <span style="font-size:0.8rem;color:var(--gray-400);">&#9679; TV: <strong style="color:var(--white);">High</strong></span>
+              <span style="font-size:0.8rem;color:var(--gray-400);">&#9679; Radio: <strong style="color:var(--white);">Medium</strong></span>
+              <span style="font-size:0.8rem;color:var(--gray-400);">&#9679; Digital: <strong style="color:var(--white);">Growing</strong></span>
+              <span style="font-size:0.8rem;color:var(--gray-400);">&#9679; OOH: <strong style="color:var(--white);">Stable</strong></span>
+            </div>
+          </div>
+        </div>
+        <div class="deepdive-panel">
+          <h4>Competitor Positioning</h4>
+          <div style="position:relative;height:120px;">
+            <!-- Scatter-like positioning -->
+            <div style="position:absolute;top:10px;left:60%;width:10px;height:10px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px rgba(0,212,255,0.5);"></div>
+            <span style="position:absolute;top:0;left:calc(60% + 14px);font-size:0.7rem;color:var(--cyan);">Nestle</span>
+            <div style="position:absolute;top:50px;left:30%;width:8px;height:8px;border-radius:50%;background:var(--amber);"></div>
+            <span style="position:absolute;top:45px;left:calc(30% + 12px);font-size:0.7rem;color:var(--amber);">Jacobs</span>
+            <div style="position:absolute;top:70px;left:45%;width:8px;height:8px;border-radius:50%;background:rgba(239,68,68,0.7);"></div>
+            <span style="position:absolute;top:65px;left:calc(45% + 12px);font-size:0.7rem;color:rgba(239,68,68,0.7);">Douwe Egberts</span>
+            <div style="position:absolute;top:85px;left:20%;width:6px;height:6px;border-radius:50%;background:var(--gray-500);"></div>
+            <span style="position:absolute;top:81px;left:calc(20% + 10px);font-size:0.7rem;color:var(--gray-500);">Local brands</span>
+            <!-- Axes -->
+            <div style="position:absolute;bottom:0;left:0;right:0;height:1px;background:rgba(255,255,255,0.06);"></div>
+            <div style="position:absolute;bottom:0;left:0;top:0;width:1px;background:rgba(255,255,255,0.06);"></div>
+            <span style="position:absolute;bottom:-16px;right:0;font-size:0.6rem;color:var(--gray-700);">Market Share &rarr;</span>
+            <span style="position:absolute;top:-4px;left:4px;font-size:0.6rem;color:var(--gray-700);">&uarr; Awareness</span>
+          </div>
+        </div>
+      </div>
+      <p class="subtitle stagger-4" style="margin-top:24px;">Drill into any metric, any segment, any time period.</p>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 10: DISTRICT INTELLIGENCE ==================== -->
+  <div class="slide" data-slide="10">
+    <div class="slide-inner">
+      <p class="section-label stagger-1">Geographic Coverage</p>
+      <h2 class="stagger-2">District-Level Intelligence</h2>
+      <div class="map-container stagger-3">
+        <div class="map-svg-wrap">
+          <svg viewBox="0 0 300 380" width="280" height="360" xmlns="http://www.w3.org/2000/svg">
+            <!-- Simplified Mauritius island outline with districts -->
+            <!-- Outer island shape -->
+            <path d="M150,15 C185,12 225,35 252,70 C270,100 278,140 275,175 C272,210 265,245 248,275 C230,305 205,335 175,355 C155,368 130,370 110,360 C85,345 60,320 42,290 C28,265 22,235 25,205 C28,175 30,145 38,120 C50,85 75,55 105,35 C120,24 135,17 150,15Z" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+
+            <!-- District regions (stylized) -->
+            <!-- Port Louis -->
+            <path d="M115,80 L145,75 L155,95 L140,110 L115,105Z" fill="rgba(0,212,255,0.5)" stroke="rgba(0,212,255,0.3)" stroke-width="0.5"/>
+            <text x="130" y="97" text-anchor="middle" fill="white" font-size="6" font-family="DM Sans">Port Louis</text>
+
+            <!-- Pamplemousses -->
+            <path d="M145,40 L190,35 L200,65 L180,80 L155,75 L145,55Z" fill="rgba(0,212,255,0.4)" stroke="rgba(0,212,255,0.3)" stroke-width="0.5"/>
+            <text x="168" y="60" text-anchor="middle" fill="white" font-size="5.5" font-family="DM Sans">Pamplemousses</text>
+
+            <!-- Riviere du Rempart -->
+            <path d="M190,35 L235,45 L255,80 L230,95 L200,65Z" fill="rgba(245,158,11,0.4)" stroke="rgba(245,158,11,0.3)" stroke-width="0.5"/>
+            <text x="222" y="68" text-anchor="middle" fill="white" font-size="5" font-family="DM Sans">Riv. du Rempart</text>
+
+            <!-- Flacq -->
+            <path d="M230,95 L265,110 L275,165 L240,180 L200,145 L200,100Z" fill="rgba(0,212,255,0.35)" stroke="rgba(0,212,255,0.3)" stroke-width="0.5"/>
+            <text x="238" y="142" text-anchor="middle" fill="white" font-size="6" font-family="DM Sans">Flacq</text>
+
+            <!-- Grand Port -->
+            <path d="M240,180 L270,210 L260,260 L225,275 L195,240 L200,195Z" fill="rgba(245,158,11,0.35)" stroke="rgba(245,158,11,0.3)" stroke-width="0.5"/>
+            <text x="232" y="232" text-anchor="middle" fill="white" font-size="6" font-family="DM Sans">Grand Port</text>
+
+            <!-- Savanne -->
+            <path d="M195,240 L225,275 L200,320 L165,345 L130,330 L140,280 L165,255Z" fill="rgba(0,212,255,0.3)" stroke="rgba(0,212,255,0.3)" stroke-width="0.5"/>
+            <text x="175" y="300" text-anchor="middle" fill="white" font-size="6" font-family="DM Sans">Savanne</text>
+
+            <!-- Black River -->
+            <path d="M40,175 L75,150 L100,175 L110,220 L90,265 L55,260 L35,225Z" fill="rgba(124,58,237,0.35)" stroke="rgba(124,58,237,0.3)" stroke-width="0.5"/>
+            <text x="73" y="215" text-anchor="middle" fill="white" font-size="5.5" font-family="DM Sans">Black River</text>
+
+            <!-- Plaines Wilhems -->
+            <path d="M100,175 L155,140 L190,170 L200,195 L165,255 L140,280 L110,260 L90,265 L110,220Z" fill="rgba(0,212,255,0.45)" stroke="rgba(0,212,255,0.3)" stroke-width="0.5"/>
+            <text x="152" y="210" text-anchor="middle" fill="white" font-size="5.5" font-family="DM Sans">Plaines Wilhems</text>
+
+            <!-- Moka -->
+            <path d="M155,95 L200,100 L200,145 L190,170 L155,140 L140,110Z" fill="rgba(245,158,11,0.45)" stroke="rgba(245,158,11,0.3)" stroke-width="0.5"/>
+            <text x="172" y="125" text-anchor="middle" fill="white" font-size="6" font-family="DM Sans">Moka</text>
+
+            <!-- District of Port Louis extended / Black River north -->
+            <path d="M55,105 L115,80 L115,105 L100,130 L75,150 L40,150Z" fill="rgba(34,197,94,0.3)" stroke="rgba(34,197,94,0.3)" stroke-width="0.5"/>
+            <text x="80" y="125" text-anchor="middle" fill="white" font-size="5" font-family="DM Sans">PL District</text>
+
+            <!-- Riviere Noire south extension for Savanne west -->
+            <path d="M90,265 L140,280 L130,330 L95,340 L55,310 L55,260Z" fill="rgba(239,68,68,0.3)" stroke="rgba(239,68,68,0.3)" stroke-width="0.5"/>
+            <text x="95" y="305" text-anchor="middle" fill="white" font-size="5" font-family="DM Sans">Riv. Noire S.</text>
+
+            <!-- Rodrigues (small island offset) -->
+            <ellipse cx="45" cy="360" rx="22" ry="10" fill="rgba(245,158,11,0.25)" stroke="rgba(245,158,11,0.3)" stroke-width="0.5"/>
+            <text x="45" y="363" text-anchor="middle" fill="white" font-size="4.5" font-family="DM Sans">Rodrigues</text>
+          </svg>
+        </div>
+        <div class="map-legend">
+          <div style="margin-bottom:12px;">
+            <h3 style="font-size:1.1rem;margin-bottom:4px;">Brand Performance Mapped</h3>
+            <p style="font-size:0.9rem;">Across all 12 districts of Mauritius</p>
+          </div>
+          <div class="map-legend-item"><div class="map-legend-dot" style="background:rgba(0,212,255,0.6);"></div>Strong Nestle presence</div>
+          <div class="map-legend-item"><div class="map-legend-dot" style="background:rgba(245,158,11,0.6);"></div>Growth opportunity</div>
+          <div class="map-legend-item"><div class="map-legend-dot" style="background:rgba(124,58,237,0.5);"></div>Competitor stronghold</div>
+          <div class="map-legend-item"><div class="map-legend-dot" style="background:rgba(34,197,94,0.5);"></div>Urban commercial hub</div>
+          <div class="map-legend-item"><div class="map-legend-dot" style="background:rgba(239,68,68,0.4);"></div>Rural / emerging</div>
+          <div style="margin-top:16px;padding:16px;background:var(--bg-card);border:1px solid rgba(245,158,11,0.2);border-radius:12px;">
+            <p style="font-size:0.85rem;color:var(--amber);font-weight:500;">Know exactly where your brands are strong &mdash; and where competitors are gaining.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 11: TIMELINE ==================== -->
+  <div class="slide" data-slide="11">
+    <div class="slide-inner">
+      <p class="section-label stagger-1">Roadmap</p>
+      <h2 class="stagger-2">Implementation Timeline</h2>
+      <div class="timeline stagger-3">
+        <div class="timeline-item">
+          <div class="timeline-dot">Q1<br>26</div>
+          <div class="timeline-content">
+            <h3>Platform Setup &amp; Pilot</h3>
+            <p>Dashboard configuration, questionnaire design, pilot study with n=200</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">Q2<br>26</div>
+          <div class="timeline-content">
+            <h3>First Full Wave</h3>
+            <p>Full n=900 fieldwork, baseline brand health report, dashboard goes live</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">Q3<br>26</div>
+          <div class="timeline-content">
+            <h3>Trend Analysis Begins</h3>
+            <p>Second wave, quarter-on-quarter comparisons, segment deep dives</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="font-size:0.65rem;">Q4<br>26+</div>
+          <div class="timeline-content">
+            <h3>Continuous Cadence</h3>
+            <p>Quarterly rhythm established, annual brand equity report, continuous optimization</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 12: PACKAGES ==================== -->
+  <div class="slide" data-slide="12">
+    <div class="slide-inner">
+      <p class="section-label stagger-1">Investment</p>
+      <h2 class="stagger-2">Investment Packages</h2>
+      <div class="cards-grid cols-3 stagger-3" style="max-width:1050px;">
+        <div class="package-card">
+          <h3>Research Only</h3>
+          <ul class="package-list">
+            <li>Quarterly brand tracker (n=900)</li>
+            <li>Brand Pulse dashboard access</li>
+            <li>Quarterly insights report</li>
+            <li>District-level breakdowns</li>
+            <li>Competitive benchmarking</li>
+          </ul>
+          <div class="package-price">Custom pricing based on scope</div>
+        </div>
+        <div class="package-card featured">
+          <h3>Research + Activation</h3>
+          <ul class="package-list">
+            <li>Everything in Research Only</li>
+            <li>In-store brand activation</li>
+            <li>Trained hostess teams (24+)</li>
+            <li>Event support &amp; sampling</li>
+            <li>Field performance reports</li>
+            <li>Mystery shopping</li>
+          </ul>
+          <div class="package-price">Custom pricing based on scope</div>
+        </div>
+        <div class="package-card">
+          <h3>Full 360</h3>
+          <ul class="package-list">
+            <li>Everything in Research + Activation</li>
+            <li>Digital marketing strategy</li>
+            <li>Social media management</li>
+            <li>Campaign execution</li>
+            <li>Content creation</li>
+            <li>Monthly performance reviews</li>
+          </ul>
+          <div class="package-price">Custom pricing based on scope</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 13: TEAM ==================== -->
+  <div class="slide" data-slide="13">
+    <div class="slide-inner">
+      <p class="section-label stagger-1">Your Team</p>
+      <h2 class="stagger-2">Meet the Team</h2>
+      <div class="team-grid stagger-3">
+        <div class="team-card">
+          <div class="team-avatar">IM</div>
+          <h3>Irfan Mooradun</h3>
+          <p class="team-role">Director, Client Relations</p>
+          <p class="team-detail">Mauritius-based, 5+ years in FMCG brand strategy and activation</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">E</div>
+          <h3>Ernest</h3>
+          <p class="team-role">Research &amp; Technology Lead</p>
+          <p class="team-detail">Platform development, data science, and analytics infrastructure</p>
+        </div>
+      </div>
+      <div class="stagger-4" style="margin-top:32px;text-align:center;padding:20px 28px;background:var(--bg-card);border:1px solid rgba(255,255,255,0.06);border-radius:14px;max-width:600px;">
+        <p style="color:var(--gray-300);font-size:1.05rem;">Supported by a team of <strong style="color:var(--cyan);">24+ trained field researchers</strong> deployed across Mauritius</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 14: CONTACT ==================== -->
+  <div class="slide" data-slide="14">
+    <div class="glow-cyan" style="top:-100px;left:-100px;"></div>
+    <div class="glow-amber" style="bottom:-100px;right:-50px;"></div>
+    <div class="slide-inner" style="text-align:center;">
+      <p class="section-label stagger-1">Next Steps</p>
+      <h2 class="stagger-2" style="margin-bottom:20px;">Let's Get Started</h2>
+      <div class="cover-line stagger-2" style="margin:0 auto 32px;"></div>
+      <div class="contact-grid stagger-3">
+        <div class="contact-item">
+          <div class="contact-icon">&#128222;</div>
+          <span>5829 4167</span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">&#9993;</div>
+          <span>exoticamauritius@gmail.com</span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">&#128205;</div>
+          <span>Port Louis, Mauritius</span>
+        </div>
+      </div>
+      <div class="stagger-4" style="margin-top:48px;">
+        <div class="cover-brand" style="font-size:clamp(1rem,1.5vw,1.4rem);">Exotica Agency Co Ltd</div>
+        <p class="contact-cta">"We're ready when you are."</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- SLIDE COUNTER -->
+<div class="slide-counter" id="slideCounter">1 / 14</div>
+
+<!-- NAV HINT -->
+<div class="nav-hint">
+  <span class="nav-key">&larr;</span>
+  <span class="nav-key">&rarr;</span>
+  <span style="margin-left:4px;">Navigate</span>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  const slides = document.querySelectorAll('.slide');
+  const totalSlides = slides.length;
+  const progressBar = document.getElementById('progressBar');
+  const slideCounter = document.getElementById('slideCounter');
+  let currentSlide = 0;
+  let isTransitioning = false;
+
+  function updateUI() {
+    const progress = ((currentSlide + 1) / totalSlides) * 100;
+    progressBar.style.width = progress + '%';
+    slideCounter.textContent = (currentSlide + 1) + ' / ' + totalSlides;
+  }
+
+  function goToSlide(index) {
+    if (index < 0 || index >= totalSlides || index === currentSlide || isTransitioning) return;
+    isTransitioning = true;
+
+    slides[currentSlide].classList.remove('active');
+    currentSlide = index;
+    slides[currentSlide].classList.add('active');
+    updateUI();
+
+    setTimeout(function() { isTransitioning = false; }, 650);
+  }
+
+  function nextSlide() { goToSlide(currentSlide + 1); }
+  function prevSlide() { goToSlide(currentSlide - 1); }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', function(e) {
+    switch(e.key) {
+      case 'ArrowRight':
+      case 'ArrowDown':
+      case ' ':
+      case 'PageDown':
+        e.preventDefault();
+        nextSlide();
+        break;
+      case 'ArrowLeft':
+      case 'ArrowUp':
+      case 'PageUp':
+        e.preventDefault();
+        prevSlide();
+        break;
+      case 'Home':
+        e.preventDefault();
+        goToSlide(0);
+        break;
+      case 'End':
+        e.preventDefault();
+        goToSlide(totalSlides - 1);
+        break;
+      case 'Escape':
+        e.preventDefault();
+        goToSlide(0);
+        break;
+    }
+  });
+
+  // Touch support
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  document.addEventListener('touchstart', function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+  }, { passive: true });
+
+  document.addEventListener('touchend', function(e) {
+    const dx = e.changedTouches[0].screenX - touchStartX;
+    const dy = e.changedTouches[0].screenY - touchStartY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+      if (dx < 0) nextSlide();
+      else prevSlide();
+    }
+  }, { passive: true });
+
+  // Mouse wheel
+  let wheelTimeout = null;
+  document.addEventListener('wheel', function(e) {
+    if (wheelTimeout) return;
+    wheelTimeout = setTimeout(function() { wheelTimeout = null; }, 800);
+    if (e.deltaY > 0) nextSlide();
+    else prevSlide();
+  }, { passive: true });
+
+  // Initialize
+  updateUI();
+})();
+</script>
+
+</body>
+</html>

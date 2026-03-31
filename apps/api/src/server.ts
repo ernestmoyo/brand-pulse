@@ -75,7 +75,7 @@ if (process.env.VERCEL !== '1') {
       console.warn(`Database connected`);
 
       app.listen(PORT, () => {
-        console.warn(`TrackPulse API running on http://localhost:${PORT}`);
+        console.warn(`Brand Pulse API running on http://localhost:${PORT}`);
       });
     } catch (error) {
       console.error('Failed to start server:', error);

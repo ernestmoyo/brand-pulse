@@ -19,4 +19,7 @@ coverage/
 
 # Build prompts
 TrackPulse_ClaudeCode_Prompt.md
+
+# IDE / Claude
 .claude/
+*.d.ts.map

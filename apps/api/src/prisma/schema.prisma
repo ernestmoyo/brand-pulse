@@ -97,6 +97,7 @@ model Brand {
   brandMetrics     BrandMetric[]
   competitorBrands CompetitorBrand[]
   reports          Report[]
+  priceRecords     PriceRecord[]
 
   @@index([clientId])
   @@map("brands")
@@ -248,6 +249,8 @@ model Respondent {
   ageGroup     String?  @map("age_group")
   sec          String?
   district     String?
+  zone         String?  // Urban / Rural
+  hhIncome     String?  @map("hh_income") // Household income bracket
   completedAt  DateTime? @map("completed_at")
   createdAt    DateTime @default(now()) @map("created_at")
 
@@ -256,6 +259,7 @@ model Respondent {
 
   @@index([waveId])
   @@index([sex, ageGroup, sec, district])
+  @@index([zone])
   @@map("respondents")
 }
 
@@ -334,6 +338,48 @@ enum ReportStatus {
   GENERATING
   COMPLETED
   FAILED
+}
+
+// ============================================================
+// Price Monitoring
+// ============================================================
+
+model PriceRecord {
+  id        String   @id @default(uuid())
+  brandId   String   @map("brand_id")
+  product   String   // e.g., "Nescafe Classic 200g"
+  format    String   // e.g., "Instant jar"
+  cheapest  Float?
+  average   Float?
+  expensive Float?
+  currency  String   @default("MUR") // Mauritian Rupee
+  month     DateTime
+  source    String?  // e.g., "Jumbo", "Winners", "Pick n Pay"
+  createdAt DateTime @default(now()) @map("created_at")
+
+  brand Brand @relation(fields: [brandId], references: [id])
+
+  @@index([brandId, month])
+  @@index([month])
+  @@map("price_records")
+}
+
+// ============================================================
+// Marketing Events
+// ============================================================
+
+model MarketingEvent {
+  id          String   @id @default(uuid())
+  brandName   String   @map("brand_name") // Can be competitor brand too
+  month       DateTime
+  channel     String   // Facebook, Radio, Billboard, TV, Press
+  description String
+  waveId      String?  @map("wave_id")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@index([brandName, month])
+  @@index([month])
+  @@map("marketing_events")
 }
 
 // ============================================================

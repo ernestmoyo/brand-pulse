@@ -6,7 +6,7 @@ import { testSignificance } from './significance.service';
 
 const REPORT_DIR = process.env.VERCEL === '1' ? '/tmp/reports' : (process.env.REPORT_DIR || './tmp/reports');
 
-// TrackPulse brand colors
+// Brand Pulse colors
 const COLORS = {
   darkBg: '080C14',
   cardBg: '1A2332',
@@ -38,13 +38,13 @@ export async function generateReport(reportId: string): Promise<void> {
   try {
     const pptx = new PptxGenJS();
     pptx.layout = 'LAYOUT_WIDE';
-    pptx.author = 'TrackPulse';
-    pptx.company = 'TrackField Projects';
+    pptx.author = 'Brand Pulse';
+    pptx.company = 'Exotica Agency';
     pptx.subject = `${report.brand.name} Brand Health Report`;
 
     // Define master slide
     pptx.defineSlideMaster({
-      title: 'TRACKPULSE_MASTER',
+      title: 'BRANDPULSE_MASTER',
       background: { color: COLORS.darkBg },
       objects: [
         // Top line
@@ -52,7 +52,7 @@ export async function generateReport(reportId: string): Promise<void> {
         // Footer
         {
           text: {
-            text: 'TrackPulse | Powered by TrackField Projects | trackfieldprojects.com',
+            text: 'Brand Pulse | Powered by Exotica Agency | exoticamauritius@gmail.com',
             options: {
               x: 0.5,
               y: 5.15,
@@ -68,7 +68,7 @@ export async function generateReport(reportId: string): Promise<void> {
     });
 
     // ---- TITLE SLIDE ----
-    const titleSlide = pptx.addSlide({ masterName: 'TRACKPULSE_MASTER' });
+    const titleSlide = pptx.addSlide({ masterName: 'BRANDPULSE_MASTER' });
     titleSlide.addText(report.brand.name.toUpperCase(), {
       x: 0.8,
       y: 1.5,
@@ -123,7 +123,7 @@ export async function generateReport(reportId: string): Promise<void> {
 
     // ---- SECTION SLIDES ----
     for (const section of report.sections) {
-      const slide = pptx.addSlide({ masterName: 'TRACKPULSE_MASTER' });
+      const slide = pptx.addSlide({ masterName: 'BRANDPULSE_MASTER' });
 
       // Section header bar
       slide.addShape(pptx.ShapeType.rect, {
@@ -204,7 +204,7 @@ export async function generateReport(reportId: string): Promise<void> {
     }
 
     // ---- THANK YOU SLIDE ----
-    const endSlide = pptx.addSlide({ masterName: 'TRACKPULSE_MASTER' });
+    const endSlide = pptx.addSlide({ masterName: 'BRANDPULSE_MASTER' });
     endSlide.addText('Thank You', {
       x: 0.8,
       y: 1.8,
@@ -216,7 +216,7 @@ export async function generateReport(reportId: string): Promise<void> {
       bold: true,
       align: 'center',
     });
-    endSlide.addText('trackfieldprojects.com', {
+    endSlide.addText('Exotica Agency — Port Louis, Mauritius', {
       x: 0.8,
       y: 3.0,
       w: 8,
@@ -270,15 +270,17 @@ function formatMetricLabel(metric: string): string {
   const labels: Record<string, string> = {
     tom_awareness: 'Top of Mind Awareness',
     spontaneous_awareness: 'Spontaneous Awareness',
-    aided_awareness: 'Aided Awareness',
+    aided_awareness: 'Aided / Total Awareness',
+    brand_consumed: 'Brand Consumed (Ever)',
+    consumption_30day: 'Consumed in Past 30 Days',
+    most_often_brand: 'Most Often Brand',
     consideration: 'Consideration',
     trial: 'Trial',
     regular_use: 'Regular Use',
-    consumption_30day: '30-Day Consumption',
     ad_awareness: 'Advertising Awareness',
     share_of_voice: 'Share of Voice',
     quality_perception: 'Quality Perception',
-    value_perception: 'Value Perception',
+    value_perception: 'Value for Money',
     nps_proxy: 'Net Promoter Proxy',
   };
   return labels[metric] || metric;

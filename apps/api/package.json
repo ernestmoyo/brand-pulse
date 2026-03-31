@@ -1,5 +1,5 @@
 {
-  "name": "@trackpulse/api",
+  "name": "@exotica/api",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@prisma/client": "^5.22.0",
-    "@trackpulse/shared": "workspace:*",
+    "@exotica/shared": "workspace:*",
     "bcrypt": "^5.1.1",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
