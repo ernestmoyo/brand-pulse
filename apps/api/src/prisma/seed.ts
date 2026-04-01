@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, WaveStatus } from '@prisma/client';
 import bcrypt from 'bcrypt';
 
 const prisma = new PrismaClient();
@@ -127,7 +127,7 @@ async function main() {
         label: w.label,
         studyId: study.id,
         period: w.period,
-        status: w.status,
+        status: w.status as WaveStatus,
         fieldworkStart: new Date(w.start),
         fieldworkEnd: new Date(w.end),
         targetN: 900,
