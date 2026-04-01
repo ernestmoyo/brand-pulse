@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import AwarenessTab from '@/components/modules/tracker/AwarenessTab';
 import AdvertisingTab from '@/components/modules/tracker/AdvertisingTab';
@@ -13,6 +13,14 @@ const TABS = [
   { id: 'positioning', label: 'Brand Positioning' },
   { id: 'segments', label: 'Segment Deep Dive' },
 ];
+
+const TAB_COMPONENTS: Record<string, React.ComponentType> = {
+  awareness: AwarenessTab,
+  advertising: AdvertisingTab,
+  consumption: ConsumptionTab,
+  positioning: PositioningTab,
+  segments: SegmentTab,
+};
 
 export default function BrandTrackerPage() {
   const [activeTab, setActiveTab] = useState('awareness');
@@ -63,11 +71,10 @@ export default function BrandTrackerPage() {
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.3 }}
         >
-          {activeTab === 'awareness' && <AwarenessTab />}
-          {activeTab === 'advertising' && <AdvertisingTab />}
-          {activeTab === 'consumption' && <ConsumptionTab />}
-          {activeTab === 'positioning' && <PositioningTab />}
-          {activeTab === 'segments' && <SegmentTab />}
+          {(() => {
+            const ActiveComponent = TAB_COMPONENTS[activeTab];
+            return ActiveComponent ? <ActiveComponent /> : null;
+          })()}
         </motion.div>
       </AnimatePresence>
     </div>

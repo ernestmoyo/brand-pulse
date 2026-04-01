@@ -10,9 +10,9 @@ const frequencyData = [
 ];
 
 const productTypeData = [
-  { name: 'Hot Cereal', value: 42.3, color: '#00D4FF' },
-  { name: 'Cold Cereal', value: 35.8, color: '#F59E0B' },
-  { name: 'Muesli/Granola', value: 21.9, color: '#8B5EA6' },
+  { name: 'Instant Coffee', value: 42.3, color: '#00D4FF' },
+  { name: 'Ground Coffee', value: 35.8, color: '#F59E0B' },
+  { name: 'Coffee Mix / 3-in-1', value: 21.9, color: '#8B5EA6' },
 ];
 
 const purchasePlaceData = [
@@ -24,11 +24,11 @@ const purchasePlaceData = [
 ];
 
 const volumeData = [
-  { tier: '<250g', pct: 10.2 },
-  { tier: '250-500g', pct: 32.5 },
-  { tier: '500g-1kg', pct: 35.8 },
-  { tier: '1-2kg', pct: 16.3 },
-  { tier: '2kg+', pct: 5.2 },
+  { tier: '<50g', pct: 10.2 },
+  { tier: '50-100g', pct: 32.5 },
+  { tier: '100-200g', pct: 35.8 },
+  { tier: '200-500g', pct: 16.3 },
+  { tier: '500g+', pct: 5.2 },
 ];
 
 export default function ConsumptionTab() {

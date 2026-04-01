@@ -27,7 +27,8 @@ export default function Sidebar({ collapsed, onToggle }: SidebarProps) {
 
   return (
     <motion.aside
-      className="h-screen flex flex-col border-r border-[rgba(0,212,255,0.1)] bg-[#0A0F1A]"
+      className="h-screen flex flex-col flex-shrink-0 overflow-hidden border-r border-[rgba(0,212,255,0.1)] bg-[#0A0F1A]"
+      style={{ width: collapsed ? 72 : 260 }}
       animate={{ width: collapsed ? 72 : 260 }}
       transition={{ duration: 0.3, ease: 'easeInOut' }}
     >
@@ -108,6 +109,7 @@ export default function Sidebar({ collapsed, onToggle }: SidebarProps) {
       <div className="border-t border-[rgba(0,212,255,0.1)] p-3">
         <button
           onClick={onToggle}
+          aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
           className="w-full flex items-center justify-center p-2 rounded-lg text-pulse-meta hover:text-pulse-body hover:bg-[rgba(255,255,255,0.04)] transition-colors"
         >
           <svg className={`w-5 h-5 transition-transform ${collapsed ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">

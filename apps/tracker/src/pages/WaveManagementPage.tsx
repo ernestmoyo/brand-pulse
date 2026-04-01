@@ -34,6 +34,10 @@ export default function WaveManagementPage() {
   const [selectedWave, setSelectedWave] = useState<string | null>(null);
   const [showWizard, setShowWizard] = useState(false);
   const [wizardStep, setWizardStep] = useState(1);
+  const [fieldworkStart, setFieldworkStart] = useState('');
+  const [fieldworkEnd, setFieldworkEnd] = useState('');
+
+  const isStep1Valid = fieldworkStart !== '' && fieldworkEnd !== '';
 
   return (
     <div className="space-y-6">
@@ -42,7 +46,7 @@ export default function WaveManagementPage() {
           <h1 className="text-2xl font-display text-white">Wave Management</h1>
           <p className="text-sm text-pulse-meta mt-1">Mauritius Hot Beverage Brand Tracker 2023-2024</p>
         </div>
-        <button onClick={() => { setShowWizard(true); setWizardStep(1); }} className="btn-primary flex items-center gap-2">
+        <button onClick={() => { setShowWizard(true); setWizardStep(1); setFieldworkStart(''); setFieldworkEnd(''); }} className="btn-primary flex items-center gap-2">
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
           New Wave
         </button>
@@ -176,8 +180,8 @@ export default function WaveManagementPage() {
                   <div className="grid grid-cols-2 gap-4">
                     <div><label className="text-xs text-pulse-meta block mb-1">Wave Label</label><input className="input-dark" placeholder="Q3-2024" /></div>
                     <div><label className="text-xs text-pulse-meta block mb-1">Period</label><input className="input-dark" placeholder="Jul-Sep 2024" /></div>
-                    <div><label className="text-xs text-pulse-meta block mb-1">Fieldwork Start</label><input type="date" className="input-dark" /></div>
-                    <div><label className="text-xs text-pulse-meta block mb-1">Fieldwork End</label><input type="date" className="input-dark" /></div>
+                    <div><label className="text-xs text-pulse-meta block mb-1">Fieldwork Start <span className="text-pulse-amber">*</span></label><input type="date" className="input-dark" value={fieldworkStart} onChange={(e) => setFieldworkStart(e.target.value)} /></div>
+                    <div><label className="text-xs text-pulse-meta block mb-1">Fieldwork End <span className="text-pulse-amber">*</span></label><input type="date" className="input-dark" value={fieldworkEnd} onChange={(e) => setFieldworkEnd(e.target.value)} /></div>
                     <div><label className="text-xs text-pulse-meta block mb-1">Target N</label><input type="number" className="input-dark" defaultValue={500} /></div>
                   </div>
                 </div>
@@ -212,7 +216,7 @@ export default function WaveManagementPage() {
               <div className="flex justify-between mt-8">
                 <button onClick={() => setWizardStep(Math.max(1, wizardStep - 1))} className="btn-secondary" disabled={wizardStep === 1}>Back</button>
                 {wizardStep < 5 ? (
-                  <button onClick={() => setWizardStep(wizardStep + 1)} className="btn-primary">Next</button>
+                  <button onClick={() => setWizardStep(wizardStep + 1)} className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed" disabled={wizardStep === 1 && !isStep1Valid}>Next</button>
                 ) : (
                   <button onClick={() => setShowWizard(false)} className="btn-primary">Activate Wave</button>
                 )}

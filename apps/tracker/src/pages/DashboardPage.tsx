@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import PulseKpiCard from '@/components/ui/PulseKpiCard';
 import BrandHealthTrendChart from '@/components/charts/BrandHealthTrendChart';
@@ -119,23 +120,32 @@ export default function DashboardPage() {
           transition={{ duration: 0.5, delay: 0.9 }}
         >
           <h3 className="text-sm uppercase tracking-wider text-pulse-meta font-mono mb-1">Consumption Heatmap</h3>
-          <p className="text-xs text-pulse-meta mb-4">Segments x Frequency</p>
-          <div className="grid grid-cols-5 gap-1">
-            {['18-24', '25-34', '35-44', '45-54', '55+'].map((age) =>
-              ['M', 'F'].map((sex) => {
-                const intensity = 0.2 + Math.random() * 0.8;
-                return (
-                  <div
-                    key={`${age}-${sex}`}
-                    className="aspect-square rounded-sm flex items-center justify-center text-[8px] font-mono text-white"
-                    style={{ backgroundColor: `rgba(0, 212, 255, ${intensity})` }}
-                    title={`${age} ${sex}: ${(intensity * 100).toFixed(0)}%`}
-                  >
-                    {(intensity * 100).toFixed(0)}
-                  </div>
-                );
-              }),
-            )}
+          <p className="text-xs text-pulse-meta mb-4">Frequency x Age Group</p>
+          <div className="grid gap-1" style={{ gridTemplateColumns: 'auto repeat(5, 1fr)' }}>
+            {/* Column headers */}
+            <div />
+            {['18-24', '25-34', '35-44', '45-54', '55+'].map((age) => (
+              <div key={age} className="text-[9px] font-mono text-pulse-meta text-center pb-1">{age}</div>
+            ))}
+            {/* Rows with labels */}
+            {['Daily', 'Weekly', 'Monthly', 'Occasional', 'Never'].map((freq) => (
+              <React.Fragment key={freq}>
+                <div className="text-[9px] font-mono text-pulse-meta flex items-center pr-1 whitespace-nowrap">{freq}</div>
+                {['18-24', '25-34', '35-44', '45-54', '55+'].map((age) => {
+                  const intensity = 0.2 + Math.random() * 0.8;
+                  return (
+                    <div
+                      key={`${freq}-${age}`}
+                      className="aspect-square rounded-sm flex items-center justify-center text-[8px] font-mono text-white"
+                      style={{ backgroundColor: `rgba(0, 212, 255, ${intensity})` }}
+                      title={`${freq} / ${age}: ${(intensity * 100).toFixed(0)}%`}
+                    >
+                      {(intensity * 100).toFixed(0)}
+                    </div>
+                  );
+                })}
+              </React.Fragment>
+            ))}
           </div>
           <div className="flex items-center justify-between mt-3">
             <span className="text-[10px] text-pulse-meta">Low</span>

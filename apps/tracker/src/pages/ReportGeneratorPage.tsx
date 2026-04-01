@@ -18,15 +18,38 @@ export default function ReportGeneratorPage() {
   const [selectedSections, setSelectedSections] = useState<string[]>([
     'executive_summary', 'brand_awareness', 'ad_awareness_sov', 'brand_consumption', 'competitive_landscape', 'recommendations',
   ]);
+  const [selectedWave, setSelectedWave] = useState('Q2-2024');
   const [format, setFormat] = useState<'pptx' | 'pdf' | 'both'>('pptx');
   const [isGenerating, setIsGenerating] = useState(false);
   const [progress, setProgress] = useState(0);
   const [activeSlide, setActiveSlide] = useState(0);
 
+  const sectionToSlideTitle: Record<string, string> = {
+    executive_summary: 'Executive Summary',
+    brand_awareness: 'Brand Awareness',
+    ad_awareness_sov: 'Advertising Awareness & SOV',
+    brand_consumption: 'Brand Consumption',
+    competitive_landscape: 'Competitive Landscape',
+    recommendations: 'Recommendations',
+  };
+
+  const visibleSlides = [
+    demoSlides[0], // Title slide always shown
+    ...demoSlides.slice(1).filter((slide) =>
+      selectedSections.some((key) => sectionToSlideTitle[key] === slide.title)
+    ),
+  ];
+
   const toggleSection = (key: string) => {
-    setSelectedSections((prev) =>
-      prev.includes(key) ? prev.filter((s) => s !== key) : [...prev, key]
-    );
+    setSelectedSections((prev) => {
+      const updated = prev.includes(key) ? prev.filter((s) => s !== key) : [...prev, key];
+      // Reset active slide if it would be out of range after the change
+      const newVisibleCount = 1 + updated.filter((k) => sectionToSlideTitle[k] && demoSlides.some((s) => s.title === sectionToSlideTitle[k])).length;
+      if (activeSlide >= newVisibleCount) {
+        setActiveSlide(0);
+      }
+      return updated;
+    });
   };
 
   const handleGenerate = () => {
@@ -65,9 +88,9 @@ export default function ReportGeneratorPage() {
 
           <div>
             <label className="text-xs text-pulse-meta font-mono block mb-1.5">Wave</label>
-            <select className="input-dark text-sm">
-              <option>Q2-2024</option>
-              <option>Compare: Q1-2024 vs Q2-2024</option>
+            <select className="input-dark text-sm" value={selectedWave} onChange={(e) => setSelectedWave(e.target.value)}>
+              <option value="Q2-2024">Q2-2024</option>
+              <option value="Compare: Q1-2024 vs Q2-2024">Compare: Q1-2024 vs Q2-2024</option>
             </select>
           </div>
 
@@ -143,7 +166,7 @@ export default function ReportGeneratorPage() {
         <motion.div className="lg:col-span-2 space-y-4" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }}>
           <div className="flex items-center justify-between">
             <h3 className="text-sm uppercase tracking-wider text-pulse-meta font-mono">Live Preview</h3>
-            <span className="text-xs text-pulse-meta font-mono">{activeSlide + 1} / {demoSlides.length}</span>
+            <span className="text-xs text-pulse-meta font-mono">{activeSlide + 1} / {visibleSlides.length}</span>
           </div>
 
           {/* Slide preview */}
@@ -163,12 +186,12 @@ export default function ReportGeneratorPage() {
                 <div className="flex-1 flex flex-col justify-center">
                   <h2 className="text-3xl font-display text-white mb-2">NESCAFE</h2>
                   <p className="text-lg text-pulse-cyan">Brand Health Tracking Report</p>
-                  <p className="text-sm text-pulse-body mt-2">Q2-2024</p>
+                  <p className="text-sm text-pulse-body mt-2">{selectedWave}</p>
                   <p className="text-xs text-pulse-meta mt-4">Prepared for Nestle Mauritius</p>
                 </div>
               ) : (
                 <div className="flex-1">
-                  <h2 className="text-xl font-display text-white mb-4">{demoSlides[activeSlide].title}</h2>
+                  <h2 className="text-xl font-display text-white mb-4">{visibleSlides[activeSlide]?.title}</h2>
                   <div className="grid grid-cols-3 gap-3 mb-4">
                     {[1, 2, 3].map((n) => (
                       <div key={n} className="glass-card p-3">
@@ -198,7 +221,7 @@ export default function ReportGeneratorPage() {
 
           {/* Slide thumbnails */}
           <div className="flex gap-2 overflow-x-auto pb-2">
-            {demoSlides.map((slide, i) => (
+            {visibleSlides.map((slide, i) => (
               <button
                 key={i}
                 onClick={() => setActiveSlide(i)}

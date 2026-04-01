@@ -10,7 +10,7 @@ export default function AppShell() {
   return (
     <div className="flex h-screen overflow-hidden bg-pulse-bg">
       <Sidebar collapsed={sidebarCollapsed} onToggle={() => setSidebarCollapsed(!sidebarCollapsed)} />
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 flex flex-col overflow-hidden min-w-0">
         <TopNav />
         <motion.main
           className="flex-1 overflow-y-auto p-6"
