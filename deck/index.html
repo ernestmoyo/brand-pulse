@@ -75,16 +75,18 @@ html, body {
 .slide[data-slide="1"].exiting { transform: scale(1.02); opacity: 0; }
 
 /* Closing: fade with rotation */
-.slide[data-slide="14"] { transform: rotate(-1deg) scale(0.97); }
-.slide[data-slide="14"].exiting { transform: rotate(1deg) scale(1.02); opacity: 0; }
+.slide[data-slide="15"] { transform: rotate(-1deg) scale(0.97); }
+.slide[data-slide="15"].exiting { transform: rotate(1deg) scale(1.02); opacity: 0; }
 
 /* Platform slides: from bottom */
 .slide[data-slide="8"],
 .slide[data-slide="9"],
-.slide[data-slide="10"] { transform: translateY(50px); }
+.slide[data-slide="10"],
+.slide[data-slide="11"] { transform: translateY(50px); }
 .slide[data-slide="8"].exiting,
 .slide[data-slide="9"].exiting,
-.slide[data-slide="10"].exiting { transform: translateY(-50px); opacity: 0; }
+.slide[data-slide="10"].exiting,
+.slide[data-slide="11"].exiting { transform: translateY(-50px); opacity: 0; }
 
 .slide.active {
   opacity: 1;
@@ -144,7 +146,7 @@ html, body {
 }
 
 /* District slide: topographic */
-.slide[data-slide="10"]::before {
+.slide[data-slide="11"]::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -153,7 +155,7 @@ html, body {
     radial-gradient(ellipse at 70% 30%, rgba(245,158,11,0.02) 0%, transparent 40%);
   z-index: 0;
 }
-.slide[data-slide="10"]::after {
+.slide[data-slide="11"]::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -1250,6 +1252,14 @@ p, li {
   pointer-events: none;
 }
 
+/* ========== TREND LINE ANIMATION ========== */
+.slide.active .trend-line {
+  animation: drawLine 2s ease forwards;
+}
+@keyframes drawLine {
+  to { stroke-dashoffset: 0; }
+}
+
 /* ========== RESPONSIVE ========== */
 @media (max-width: 900px) {
   .slide { padding: 40px 32px; }
@@ -1519,16 +1529,18 @@ p, li {
           <h3 style="color:var(--white);margin-bottom:16px;">Study Design</h3>
           <ul class="bullets" style="gap:12px;">
             <li>Sample: <strong class="stat-number" data-countup="900" data-prefix="n=">n=0</strong> per quarter</li>
-            <li>Method: <strong>CATI + field intercepts</strong></li>
+            <li>Method: <strong>CATI + field intercepts + mobile CAPI</strong></li>
             <li>Duration: <strong class="stat-number"><span data-countup="8">0</span>-<span data-countup="10">0</span> minutes</strong> per interview</li>
+            <li>Cadence: <strong>Every 3&ndash;4 months</strong> &mdash; continuous quarterly rhythm</li>
           </ul>
         </div>
         <div class="card">
           <h3 style="color:var(--white);margin-bottom:16px;">Quotas &amp; Quality</h3>
           <ul class="bullets" style="gap:12px;">
             <li>Quota: Sex, Age, SEC, <strong>all <span class="stat-number" data-countup="12">0</span> districts</strong>, Urban/Rural</li>
-            <li>Quality: Standard QA, <strong>real-time monitoring</strong></li>
+            <li>Quality: Standard QA, <strong>real-time field monitoring</strong></li>
             <li>Proven across <strong><span class="stat-number" data-countup="10">0</span>+ FMCG trackers</strong> in Mauritius</li>
+            <li>Reports structured for <strong>Nestle SA regional standards</strong></li>
           </ul>
         </div>
       </div>
@@ -1538,33 +1550,39 @@ p, li {
   <!-- ==================== SLIDE 7: DATA COLLECTION ==================== -->
   <div class="slide" data-slide="7">
     <div class="slide-inner">
-      <p class="section-label reveal d0">Data Sources</p>
-      <h2 class="reveal d1">Multi-Channel Data Harvesting</h2>
+      <p class="section-label reveal d0">Data Collection</p>
+      <h2 class="reveal d1">How We Collect Your Data</h2>
+      <p class="subtitle reveal d1" style="margin-bottom:28px;text-align:center;max-width:750px;">We are transparent about our collection platforms &mdash; flexible enough to pivot to whatever the research demands.</p>
       <div class="cards-grid cols-3" style="max-width:1000px;">
         <div class="card reveal d2">
-          <div class="card-icon">&#128222;</div>
-          <h3>Primary Research</h3>
-          <p>Telephone surveys and in-store intercepts across the island</p>
+          <div class="card-icon">&#128241;</div>
+          <h3>Mobile CAPI</h3>
+          <p>Smartphone-based questionnaires administered face-to-face by trained field researchers in supermarkets, events, and communities</p>
         </div>
         <div class="card reveal d2" style="transition-delay:350ms;">
-          <div class="card-icon">&#128225;</div>
-          <h3>Digital Listening</h3>
-          <p>Social media brand mentions and sentiment analysis</p>
+          <div class="card-icon">&#128222;</div>
+          <h3>CATI Surveys</h3>
+          <p>Computer-Assisted Telephone Interviewing for reach into rural districts and hard-to-access segments</p>
         </div>
         <div class="card reveal d2" style="transition-delay:400ms;">
-          <div class="card-icon">&#127991;</div>
-          <h3>Price Monitoring</h3>
-          <p>Retail price tracking across outlets in all districts</p>
+          <div class="card-icon">&#128225;</div>
+          <h3>Digital Listening</h3>
+          <p>Social media brand mentions, sentiment analysis, and online review monitoring</p>
         </div>
         <div class="card reveal d3">
-          <div class="card-icon">&#128202;</div>
-          <h3>Open Data</h3>
-          <p>Government statistics, trade data, and economic indicators</p>
+          <div class="card-icon">&#127991;</div>
+          <h3>Retail Price Audits</h3>
+          <p>On-the-ground price and shelf-space tracking across supermarkets and retail outlets in all districts</p>
         </div>
-        <div class="card reveal d3" style="grid-column: span 2;transition-delay:500ms;">
+        <div class="card reveal d3" style="transition-delay:500ms;">
+          <div class="card-icon">&#128202;</div>
+          <h3>Open Data Integration</h3>
+          <p>Government statistics, trade data, and economic indicators layered into the analysis</p>
+        </div>
+        <div class="card reveal d3" style="transition-delay:550ms;">
           <div class="card-icon" style="background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.15);">&#128065;</div>
           <h3>Field Intelligence</h3>
-          <p>Our activation teams across Mauritius serve as eyes on the ground — real-time market observations from every district</p>
+          <p>Our 24+ activation teams serve as eyes on the ground &mdash; real-time market observations from every district</p>
         </div>
       </div>
     </div>
@@ -1580,8 +1598,8 @@ p, li {
           Client Portal
         </div>
       </div>
-      <h2 class="reveal d1">Brand Pulse &mdash; Your Command Centre</h2>
-      <p class="subtitle reveal d1" style="margin-bottom:32px;text-align:center;max-width:700px;">A live, interactive dashboard replacing static quarterly PowerPoint reports.<br>Access your data anytime, anywhere.</p>
+      <h2 class="reveal d1">Brand Pulse &mdash; Your Decision Support Tool</h2>
+      <p class="subtitle reveal d1" style="margin-bottom:32px;text-align:center;max-width:750px;">Not just a dashboard &mdash; an interactive intelligence platform that replaces static PowerPoint reports.<br>Filter by brand, district, time period, or segment. Access your data anytime, anywhere.</p>
       <div class="browser-frame reveal d2">
         <div class="browser-topbar">
           <div class="browser-dots">
@@ -1747,8 +1765,171 @@ p, li {
     </div>
   </div>
 
-  <!-- ==================== SLIDE 10: DISTRICT INTELLIGENCE ==================== -->
+  <!-- ==================== SLIDE 10: VISUALISATION & DECISION SUPPORT ==================== -->
   <div class="slide" data-slide="10">
+    <div class="slide-inner">
+      <div class="reveal d0" style="display:flex;align-items:center;gap:16px;margin-bottom:4px;">
+        <p class="section-label" style="margin-bottom:0;">Visualisation</p>
+        <div class="client-badge">
+          <svg viewBox="0 0 200 50" class="nestle-logo small"><text x="0" y="38" font-family="'DM Serif Display', serif" font-size="36" font-weight="700" fill="#E2001A">Nestl&#233;</text></svg>
+          Decision Support
+        </div>
+      </div>
+      <h2 class="reveal d1">From Raw Data to Actionable Decisions</h2>
+
+      <!-- TIME SERIES SHOWCASE — Nescafe brand metrics over months -->
+      <div class="reveal d2" style="width:100%;max-width:1000px;">
+        <div style="background:var(--bg-card);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:24px 28px;overflow:hidden;">
+          <!-- Chart header -->
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <img src="https://www.nescafe.com/za/sites/default/files/2023-10/PLP-CategoryHeaders-NescafeClassic-336x150.jpg" alt="Nescafe" style="width:48px;height:32px;object-fit:cover;border-radius:6px;border:1px solid rgba(255,255,255,0.1);">
+              <div>
+                <span style="font-family:var(--font-mono);font-size:0.8rem;font-weight:600;color:var(--white);letter-spacing:0.04em;">NESCAFE CLASSIC</span>
+                <span style="font-size:0.7rem;color:var(--gray-500);margin-left:8px;">Brand Awareness Trend</span>
+              </div>
+            </div>
+            <div style="display:flex;gap:16px;">
+              <span style="font-size:0.65rem;color:var(--cyan);font-family:var(--font-mono);display:flex;align-items:center;gap:4px;"><span style="width:16px;height:2px;background:var(--cyan);border-radius:1px;display:inline-block;"></span>Awareness</span>
+              <span style="font-size:0.65rem;color:var(--amber);font-family:var(--font-mono);display:flex;align-items:center;gap:4px;"><span style="width:16px;height:2px;background:var(--amber);border-radius:1px;display:inline-block;"></span>Consumption</span>
+              <span style="font-size:0.65rem;color:rgba(124,58,237,0.8);font-family:var(--font-mono);display:flex;align-items:center;gap:4px;"><span style="width:16px;height:2px;background:rgba(124,58,237,0.8);border-radius:1px;display:inline-block;"></span>Ad Recall</span>
+            </div>
+          </div>
+
+          <!-- SVG Time Series Chart -->
+          <svg viewBox="0 0 800 220" width="100%" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+            <!-- Grid lines -->
+            <line x1="60" y1="20" x2="60" y2="180" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+            <line x1="60" y1="180" x2="780" y2="180" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+            <line x1="60" y1="140" x2="780" y2="140" stroke="rgba(255,255,255,0.03)" stroke-width="1" stroke-dasharray="4,4"/>
+            <line x1="60" y1="100" x2="780" y2="100" stroke="rgba(255,255,255,0.03)" stroke-width="1" stroke-dasharray="4,4"/>
+            <line x1="60" y1="60" x2="780" y2="60" stroke="rgba(255,255,255,0.03)" stroke-width="1" stroke-dasharray="4,4"/>
+            <line x1="60" y1="20" x2="780" y2="20" stroke="rgba(255,255,255,0.03)" stroke-width="1" stroke-dasharray="4,4"/>
+
+            <!-- Y-axis labels -->
+            <text x="50" y="184" fill="#64748B" font-size="9" font-family="Space Grotesk" text-anchor="end">0%</text>
+            <text x="50" y="144" fill="#64748B" font-size="9" font-family="Space Grotesk" text-anchor="end">25%</text>
+            <text x="50" y="104" fill="#64748B" font-size="9" font-family="Space Grotesk" text-anchor="end">50%</text>
+            <text x="50" y="64" fill="#64748B" font-size="9" font-family="Space Grotesk" text-anchor="end">75%</text>
+            <text x="50" y="24" fill="#64748B" font-size="9" font-family="Space Grotesk" text-anchor="end">100%</text>
+
+            <!-- X-axis month labels -->
+            <text x="100" y="200" fill="#64748B" font-size="9" font-family="Space Grotesk" text-anchor="middle">Jan</text>
+            <text x="180" y="200" fill="#64748B" font-size="9" font-family="Space Grotesk" text-anchor="middle">Feb</text>
+            <text x="260" y="200" fill="#64748B" font-size="9" font-family="Space Grotesk" text-anchor="middle">Mar</text>
+            <text x="340" y="200" fill="#94A3B8" font-size="9" font-family="Space Grotesk" text-anchor="middle" font-weight="600">Apr</text>
+            <text x="420" y="200" fill="#64748B" font-size="9" font-family="Space Grotesk" text-anchor="middle">May</text>
+            <text x="500" y="200" fill="#64748B" font-size="9" font-family="Space Grotesk" text-anchor="middle">Jun</text>
+            <text x="580" y="200" fill="#94A3B8" font-size="9" font-family="Space Grotesk" text-anchor="middle" font-weight="600">Jul</text>
+            <text x="660" y="200" fill="#64748B" font-size="9" font-family="Space Grotesk" text-anchor="middle">Aug</text>
+            <text x="740" y="200" fill="#64748B" font-size="9" font-family="Space Grotesk" text-anchor="middle">Sep</text>
+
+            <!-- Quarter markers -->
+            <rect x="88" y="206" width="24" height="12" rx="3" fill="rgba(0,212,255,0.1)"/>
+            <text x="100" y="215" fill="#00D4FF" font-size="7" font-family="Space Grotesk" text-anchor="middle" font-weight="600">Q1</text>
+            <rect x="328" y="206" width="24" height="12" rx="3" fill="rgba(245,158,11,0.1)"/>
+            <text x="340" y="215" fill="#F59E0B" font-size="7" font-family="Space Grotesk" text-anchor="middle" font-weight="600">Q2</text>
+            <rect x="568" y="206" width="24" height="12" rx="3" fill="rgba(0,212,255,0.1)"/>
+            <text x="580" y="215" fill="#00D4FF" font-size="7" font-family="Space Grotesk" text-anchor="middle" font-weight="600">Q3</text>
+
+            <!-- Awareness line (cyan) — trending up from 62% to 78% -->
+            <polyline points="100,81 180,78 260,72 340,68 420,62 500,56 580,52 660,46 740,40"
+              fill="none" stroke="#00D4FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+              stroke-dasharray="800" stroke-dashoffset="800" class="trend-line"/>
+            <!-- Area fill -->
+            <polygon points="100,81 180,78 260,72 340,68 420,62 500,56 580,52 660,46 740,40 740,180 100,180"
+              fill="url(#areaGradCyan)" opacity="0.3"/>
+
+            <!-- Consumption line (amber) — 45% to 58% -->
+            <polyline points="100,108 180,105 260,100 340,97 420,92 500,88 580,85 660,80 740,76"
+              fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              stroke-dasharray="800" stroke-dashoffset="800" class="trend-line"/>
+
+            <!-- Ad Recall line (purple) — 38% to 51%, dips then recovers -->
+            <polyline points="100,119 180,122 260,118 340,128 420,120 500,112 580,108 660,102 740,98"
+              fill="none" stroke="rgba(124,58,237,0.8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              stroke-dasharray="6,4" stroke-dashoffset="800" class="trend-line"/>
+
+            <!-- Data point dots on awareness line -->
+            <circle cx="100" cy="81" r="4" fill="#080C14" stroke="#00D4FF" stroke-width="2"/>
+            <circle cx="340" cy="68" r="4" fill="#080C14" stroke="#00D4FF" stroke-width="2"/>
+            <circle cx="580" cy="52" r="4" fill="#080C14" stroke="#00D4FF" stroke-width="2"/>
+            <circle cx="740" cy="40" r="5" fill="#00D4FF" stroke="#080C14" stroke-width="2"/>
+
+            <!-- Current value callout -->
+            <rect x="700" y="22" width="56" height="20" rx="4" fill="rgba(0,212,255,0.15)" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+            <text x="728" y="36" fill="#00D4FF" font-size="10" font-family="Space Grotesk" text-anchor="middle" font-weight="700">78% &#9650;</text>
+
+            <!-- Campaign marker -->
+            <line x1="340" y1="20" x2="340" y2="180" stroke="rgba(245,158,11,0.3)" stroke-width="1" stroke-dasharray="3,3"/>
+            <rect x="310" y="8" width="60" height="14" rx="3" fill="rgba(245,158,11,0.15)"/>
+            <text x="340" y="18" fill="#F59E0B" font-size="7" font-family="Space Grotesk" text-anchor="middle">Campaign</text>
+
+            <defs>
+              <linearGradient id="areaGradCyan" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#00D4FF" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="#00D4FF" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+
+      <!-- DATA PIPELINE FLOW DIAGRAM -->
+      <div class="reveal d3" style="width:100%;max-width:1000px;margin-top:20px;">
+        <div style="background:var(--bg-card);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:20px 28px;">
+          <div style="font-family:var(--font-mono);font-size:0.75rem;color:var(--gray-500);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px;">Data Pipeline &mdash; How it flows</div>
+          <svg viewBox="0 0 900 80" width="100%" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+            <!-- Step 1: Collect -->
+            <rect x="0" y="15" width="140" height="50" rx="10" fill="rgba(0,212,255,0.1)" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+            <text x="70" y="36" fill="#00D4FF" font-size="9" font-family="Space Grotesk" text-anchor="middle" font-weight="600">&#128241; COLLECT</text>
+            <text x="70" y="52" fill="#94A3B8" font-size="7.5" font-family="Space Grotesk" text-anchor="middle">CAPI &bull; CATI &bull; Digital</text>
+
+            <!-- Arrow 1 -->
+            <line x1="148" y1="40" x2="178" y2="40" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+
+            <!-- Step 2: Process -->
+            <rect x="185" y="15" width="140" height="50" rx="10" fill="rgba(245,158,11,0.1)" stroke="rgba(245,158,11,0.3)" stroke-width="1"/>
+            <text x="255" y="36" fill="#F59E0B" font-size="9" font-family="Space Grotesk" text-anchor="middle" font-weight="600">&#9881; PROCESS</text>
+            <text x="255" y="52" fill="#94A3B8" font-size="7.5" font-family="Space Grotesk" text-anchor="middle">Clean &bull; Validate &bull; Weight</text>
+
+            <!-- Arrow 2 -->
+            <line x1="333" y1="40" x2="363" y2="40" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+
+            <!-- Step 3: Analyse -->
+            <rect x="370" y="15" width="140" height="50" rx="10" fill="rgba(124,58,237,0.1)" stroke="rgba(124,58,237,0.3)" stroke-width="1"/>
+            <text x="440" y="36" fill="rgba(124,58,237,0.9)" font-size="9" font-family="Space Grotesk" text-anchor="middle" font-weight="600">&#128202; ANALYSE</text>
+            <text x="440" y="52" fill="#94A3B8" font-size="7.5" font-family="Space Grotesk" text-anchor="middle">Segment &bull; Trend &bull; Model</text>
+
+            <!-- Arrow 3 -->
+            <line x1="518" y1="40" x2="548" y2="40" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+
+            <!-- Step 4: Visualise -->
+            <rect x="555" y="15" width="140" height="50" rx="10" fill="rgba(34,197,94,0.1)" stroke="rgba(34,197,94,0.3)" stroke-width="1"/>
+            <text x="625" y="36" fill="#22C55E" font-size="9" font-family="Space Grotesk" text-anchor="middle" font-weight="600">&#128200; VISUALISE</text>
+            <text x="625" y="52" fill="#94A3B8" font-size="7.5" font-family="Space Grotesk" text-anchor="middle">Charts &bull; Maps &bull; Funnels</text>
+
+            <!-- Arrow 4 -->
+            <line x1="703" y1="40" x2="733" y2="40" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+
+            <!-- Step 5: Decide -->
+            <rect x="740" y="15" width="140" height="50" rx="10" fill="rgba(226,0,26,0.1)" stroke="rgba(226,0,26,0.3)" stroke-width="1"/>
+            <text x="810" y="36" fill="#E2001A" font-size="9" font-family="Space Grotesk" text-anchor="middle" font-weight="600">&#127919; DECIDE</text>
+            <text x="810" y="52" fill="#94A3B8" font-size="7.5" font-family="Space Grotesk" text-anchor="middle">Brand Pulse Dashboard</text>
+
+            <defs>
+              <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                <polygon points="0 0, 8 3, 0 6" fill="rgba(255,255,255,0.3)"/>
+              </marker>
+            </defs>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 11: DISTRICT INTELLIGENCE ==================== -->
+  <div class="slide" data-slide="11">
     <div class="slide-inner">
       <p class="section-label reveal d0">Geographic Coverage</p>
       <h2 class="reveal d1">District-Level Intelligence</h2>
@@ -1825,8 +2006,8 @@ p, li {
     </div>
   </div>
 
-  <!-- ==================== SLIDE 11: TIMELINE ==================== -->
-  <div class="slide" data-slide="11">
+  <!-- ==================== SLIDE 12: TIMELINE ==================== -->
+  <div class="slide" data-slide="12">
     <div class="slide-inner">
       <p class="section-label reveal d0">Roadmap</p>
       <h2 class="reveal d1">Implementation Timeline</h2>
@@ -1863,8 +2044,8 @@ p, li {
     </div>
   </div>
 
-  <!-- ==================== SLIDE 12: PACKAGES ==================== -->
-  <div class="slide" data-slide="12">
+  <!-- ==================== SLIDE 13: PACKAGES ==================== -->
+  <div class="slide" data-slide="13">
     <div class="slide-inner">
       <p class="section-label reveal d0">Investment</p>
       <h2 class="reveal d1">Investment Packages</h2>
@@ -1908,8 +2089,8 @@ p, li {
     </div>
   </div>
 
-  <!-- ==================== SLIDE 13: TEAM ==================== -->
-  <div class="slide" data-slide="13">
+  <!-- ==================== SLIDE 14: TEAM ==================== -->
+  <div class="slide" data-slide="14">
     <div class="slide-inner">
       <p class="section-label reveal d0">Your Team</p>
       <h2 class="reveal d1">Meet the Team</h2>
@@ -1934,8 +2115,8 @@ p, li {
     </div>
   </div>
 
-  <!-- ==================== SLIDE 14: CONTACT ==================== -->
-  <div class="slide" data-slide="14">
+  <!-- ==================== SLIDE 15: CONTACT ==================== -->
+  <div class="slide" data-slide="15">
     <div class="glow-cyan" style="top:-100px;left:-100px;"></div>
     <div class="glow-amber" style="bottom:-100px;right:-50px;"></div>
     <div class="glow-forest" style="top:50%;left:50%;transform:translate(-50%,-50%);width:500px;height:500px;"></div>
@@ -1965,6 +2146,23 @@ p, li {
         </div>
         <p class="contact-cta">"We're ready when you are."</p>
       </div>
+      <div class="reveal d4" style="margin-top:40px;display:flex;align-items:center;justify-content:center;gap:10px;opacity:0.5;">
+        <span style="font-size:0.65rem;color:var(--gray-500);font-family:var(--font-mono);letter-spacing:0.06em;">Technology backed by</span>
+        <a href="https://7squareinc.com" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:var(--gold);font-family:var(--font-mono);font-weight:600;font-size:0.75rem;letter-spacing:0.04em;">
+          <svg viewBox="0 0 28 28" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="24" height="24" rx="5" stroke="#D4A853" stroke-width="1.5" fill="rgba(212,168,83,0.08)"/>
+            <circle cx="14" cy="14" r="3" fill="#D4A853"/>
+            <circle cx="8" cy="8" r="1.5" fill="#D4A853" opacity="0.5"/>
+            <circle cx="20" cy="8" r="1.5" fill="#D4A853" opacity="0.5"/>
+            <circle cx="8" cy="20" r="1.5" fill="#D4A853" opacity="0.5"/>
+            <circle cx="20" cy="20" r="1.5" fill="#D4A853" opacity="0.5"/>
+            <circle cx="14" cy="6" r="1.5" fill="#D4A853" opacity="0.5"/>
+            <circle cx="14" cy="22" r="1.5" fill="#D4A853" opacity="0.5"/>
+            <circle cx="6" cy="14" r="1.5" fill="#D4A853" opacity="0.5"/>
+          </svg>
+          7squareinc.com
+        </a>
+      </div>
     </div>
   </div>
 
@@ -1974,7 +2172,7 @@ p, li {
 <div class="progress-bar" id="progressBar"></div>
 
 <!-- SLIDE COUNTER -->
-<div class="slide-counter" id="slideCounter">01 / 14</div>
+<div class="slide-counter" id="slideCounter">01 / 15</div>
 
 <!-- NAV HINT -->
 <div class="nav-hint">
